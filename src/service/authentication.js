@@ -6,14 +6,14 @@ export const loginService = (req, res) => {
   repository
     .login(request)
     .then((response) => {
-      return res.status(200).json({
+      return res.json({
         success: true,
         result: "Yêu cầu thành công",
         data: response,
       });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const logoutService = (req, res) => {
@@ -25,11 +25,11 @@ export const logoutService = (req, res) => {
     .logout(request)
     .then(() => {
       return res
-        .status(200)
+        
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 import { generateAccessJWT } from "../../utils/jwt.js";
@@ -43,7 +43,7 @@ export const tokenService = (req, res) => {
     .then(() => {
       const accessToken = generateAccessJWT(req.body.payload);
       return res
-        .status(200)
+        
         .json({
           success: true,
           result: "Yêu cầu thành công",
@@ -51,7 +51,7 @@ export const tokenService = (req, res) => {
         });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const changeService = (req, res) => {
@@ -64,11 +64,11 @@ export const changeService = (req, res) => {
     .change(request)
     .then(() => {
       return res
-        .status(200)
+        
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 import { sendEmail } from "../../utils/sendEmail.js";
@@ -89,14 +89,14 @@ export const missingService = (req, res) => {
     })
     .then(() => {
       return res
-        .status(200)
+        
         .json({
           success: true,
           result: "Thành công, kiểm tra mã xác thực trong email của bạn",
         });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const confirmService = (req, res) => {
@@ -114,13 +114,13 @@ export const confirmService = (req, res) => {
     })
     .then(() => {
       return res
-        .status(200)
+        
         .json({
           success: true,
           result: "Thành công, kiểm tra mật khẩu mới trong email của bạn",
         });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };

@@ -3,10 +3,10 @@ export const createBillService = (req, res) => {
   repository
     .createBill(req.body.bill)
     .then((bill) => {
-      return res.status(200).json({ result: "Yêu cầu thành công", data: bill });
+      return res.json({ result: "Yêu cầu thành công", data: bill });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const createCustomerService = (req, res) => {
@@ -14,31 +14,31 @@ export const createCustomerService = (req, res) => {
     .createCustomer(req.body.customer, req.files)
     .then((id_customer) => {
       return res
-        .status(200)
+        
         .json({ result: "Yêu cầu thành công", data: id_customer });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const removeBillService = (req, res) => {
   repository
     .removeBill(req.params.id, req.body.payload.shop)
     .then(() => {
-      return res.status(200).json({ result: "Yêu cầu thành công" });
+      return res.json({ result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const updateVoucherOfBillService = (req, res) => {
   repository
     .updateVoucherOfBill(req.params.id, req.body.payload.shop, req.body.voucher)
     .then((bill) => {
-      return res.status(200).json({ result: "Yêu cầu thành công", data: bill });
+      return res.json({ result: "Yêu cầu thành công", data: bill });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const showBillService = (req, res) => {
@@ -47,11 +47,11 @@ export const showBillService = (req, res) => {
     .showBill(req.query)
     .then((bills) => {
       return res
-        .status(200)
+        
         .json({ success: true, result: "Yêu cầu thành công", data: bills });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const createVoucherService = (req, res) => {
@@ -59,11 +59,11 @@ export const createVoucherService = (req, res) => {
     .createVoucher(req.body.voucher)
     .then(() => {
       return res
-        .status(200)
+        
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const removeVoucherService = (req, res) => {
@@ -71,11 +71,11 @@ export const removeVoucherService = (req, res) => {
     .removeVoucher(req.params.id, req.body.payload.shop)
     .then(() => {
       return res
-        .status(200)
+        
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const showVoucherService = (req, res) => {
@@ -84,11 +84,11 @@ export const showVoucherService = (req, res) => {
     .showVoucher(req.query)
     .then((vouchers) => {
       return res
-        .status(200)
+        
         .json({ success: true, result: "Yêu cầu thành công", data: vouchers });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const updatePayment = (req, res) => {
@@ -101,11 +101,11 @@ export const updatePayment = (req, res) => {
     )
     .then(() => {
       return res
-        .status(200)
+        
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const showPaymentService = (req, res) => {
@@ -114,10 +114,10 @@ export const showPaymentService = (req, res) => {
     .showPayment(req.query)
     .then((payments) => {
       return res
-        .status(200)
+        
         .json({ success: true, result: "Yêu cầu thành công", data: payments });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };

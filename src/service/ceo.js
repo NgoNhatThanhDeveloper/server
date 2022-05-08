@@ -10,20 +10,20 @@ export const createHRService = (req, res) => {
       );
     })
     .then(() => {
-      return res.status(200).json({ success: true, result: "Thành công" });
+      return res.json({ success: true, result: "Thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const createShopService = (req, res) => {
   repository
     .createSHOP(req.body.shop, req.files)
     .then(() => {
-      return res.status(200).json({ success: true, result: "Thành công" });
+      return res.json({ success: true, result: "Thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const replaceHRService = (req, res) => {
@@ -36,40 +36,40 @@ export const replaceHRService = (req, res) => {
       );
     })
     .then(() => {
-      return res.status(200).json({ success: true, result: "Thành công" });
+      return res.json({ success: true, result: "Thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const removeSHOPService = (req, res) => {
   repository
     .removeSHOP(req.params.id)
     .then(() => {
-      return res.status(200).json({ success: true, result: "Thành công" });
+      return res.json({ success: true, result: "Thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const removeHRService = (req, res) => {
   repository
     .removeHR(req.params.id)
     .then(() => {
-      return res.status(200).json({ success: true, result: "Thành công" });
+      return res.json({ success: true, result: "Thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const updateSalaryHRService = (req, res) => {
   repository
     .updateSalaryOfHR(req.params.id, req.body.salary, req.body.bonus)
     .then(() => {
-      return res.status(200).json({ success: true, result: "Thành công" });
+      return res.json({ success: true, result: "Thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const showHRService = (req, res) => {
@@ -78,11 +78,11 @@ export const showHRService = (req, res) => {
     .showHR(query)
     .then((hr) => {
       return res
-        .status(200)
+        
         .json({ success: true, result: "Yêu cầu thành công", data: hr });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const showShopService = (req, res) => {
@@ -90,10 +90,10 @@ export const showShopService = (req, res) => {
     .showSHOP(req.query)
     .then((shop) => {
       return res
-        .status(200)
+        
         .json({ success: true, result: "Yêu cầu thành công", data: shop });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };

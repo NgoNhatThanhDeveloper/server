@@ -4,7 +4,7 @@ export const mPermission = (req, res, next) => {
     next();
   } else {
     return res
-      .status(403)
+
       .json({ success: false, result: "Bạn không thể sử dụng chức năng này" });
   }
 };
@@ -24,7 +24,7 @@ export const mCreateBill = (req, res, next) => {
     next();
   } else {
     return res
-      .status(403)
+
       .json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
   }
 };
@@ -48,7 +48,7 @@ export const mCreateCustomer = (req, res, next) => {
     next();
   } else {
     return res
-      .status(403)
+ 
       .json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
   }
 };
@@ -57,7 +57,7 @@ export const mUpdateVoucherOfBilling = (req, res, next) => {
     next();
   } else {
     return res
-      .status(403)
+
       .json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
   }
 };
@@ -83,7 +83,7 @@ export const mCreateVoucher = (req, res, next) => {
     next();
   } else {
     return res
-      .status(403)
+  
       .json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
   }
 };

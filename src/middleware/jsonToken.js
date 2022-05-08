@@ -16,7 +16,7 @@ export const mAccessToken = (req, res, next) => {
       next();
     })
     .catch((err) => {
-      return res.status(403).json({success: false, result: err.message });
+      return res.json({success: false, result: err.message });
     });
 };
 export const mAccessTokenExp = (req, res, next) => {
@@ -35,7 +35,7 @@ export const mAccessTokenExp = (req, res, next) => {
       next();
     })
     .catch((err) => {
-      return res.status(403).json({ success: false,result: err.message });
+      return res.json({ success: false,result: err.message });
     });
 };
 export const mRefreshToken = (req, res, next) => {
@@ -50,11 +50,11 @@ export const mRefreshToken = (req, res, next) => {
         next();
       } else {
         return res
-          .status(403)
+          
           .json({success: false, result: "Mã phiên xác thực đã hết hạn hoặc không hợp lệ" });
       }
     })
     .catch((err) => {
-      return res.status(403).json({success: false, result: err.message });
+      return res.json({success: false, result: err.message });
     });
 };

@@ -11,14 +11,14 @@ export const createEmployService = (req, res) => {
     })
     .then(() => {
       return res
-        .status(200)
+        
         .json({
           success: true,
           result: "Thành công, đã thông báo đến nhân viên qua email",
         });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const updatePermissionOfEmployService = (req, res) => {
@@ -30,11 +30,11 @@ export const updatePermissionOfEmployService = (req, res) => {
     .updatePermissionOfEmploy(request)
     .then(() => {
       return res
-        .status(200)
+        
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const removeEmployService = (req, res) => {
@@ -46,11 +46,11 @@ export const removeEmployService = (req, res) => {
     )
     .then(() => {
       return res
-        .status(200)
+        
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const updateSalaryOfEmployService = (req, res) => {
@@ -62,11 +62,11 @@ export const updateSalaryOfEmployService = (req, res) => {
     .updateSalaryOfEmploy(request)
     .then(() => {
       return res
-        .status(200)
+        
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
 export const showInformationEmployService = (req, res) => {
@@ -75,10 +75,10 @@ export const showInformationEmployService = (req, res) => {
     .showInformationEmploy(req.query)
     .then((employ) => {
       return res
-        .status(200)
+        
         .json({ success: true, result: "Yêu cầu thành công", data: employ });
     })
     .catch((error) => {
-      return res.status(200).json({ success: false, result: error.message });
+      return res.json({ success: false, result: error.message });
     });
 };
