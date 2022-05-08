@@ -7,7 +7,7 @@ export const createProductService = (req, res) => {
   repository
     .createProduct(request)
     .then(() => {
-      return res.status(200).json({ result: "Thành công" });
+      return res.status(200).json({ result: "Yêu cầu thành công" });
     })
     .catch((error) => {
       return res.status(400).json({ result: error.message });
@@ -22,7 +22,7 @@ export const updateProductService = (req, res) => {
   repository
     .updateProduct(request)
     .then(() => {
-      return res.status(200).json({ result: "Thành công" });
+      return res.status(200).json({ result: "Yêu cầu thành công" });
     })
     .catch((error) => {
       return res.status(400).json({ result: error.message });
@@ -37,7 +37,7 @@ export const updateImageProductService = (req, res) => {
   repository
     .updateImageProduct(request)
     .then(() => {
-      return res.status(200).json({ result: "Thành công" });
+      return res.status(200).json({ result: "Yêu cầu thành công" });
     })
     .catch((error) => {
       return res.status(400).json({ result: error.message });
@@ -51,7 +51,7 @@ export const removeProductService = (req, res) => {
   repository
     .removeProduct(request)
     .then(() => {
-      return res.status(200).json({ result: "Thành công" });
+      return res.status(200).json({ result: "Yêu cầu thành công" });
     })
     .catch((error) => {
       return res.status(400).json({ result: error.message });
@@ -65,7 +65,9 @@ export const showProductService = (req, res) => {
   repository
     .showProduct(request)
     .then((product) => {
-      return res.status(200).json({ result: product });
+      return res
+        .status(200)
+        .json({ result: "Yêu cầu thành công", data: product });
     })
     .catch((error) => {
       return res.status(400).json({ result: error.message });

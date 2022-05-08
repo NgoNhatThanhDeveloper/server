@@ -4,7 +4,7 @@ export const updateAvatarService = (req, res) => {
   repository
     .updateAvatar(req.body.payload.code, req.file)
     .then(() => {
-      return res.status(200).json({ result: "Thành công" });
+      return res.status(200).json({ result: "Yêu cầu thành công" });
     })
     .catch((error) => {
       return res.status(400).json({ result: error.message });
@@ -14,7 +14,7 @@ export const showInformationService = (req, res) => {
   repository
     .showInformation(req.body.payload.code)
     .then((information) => {
-      return res.status(200).json({ result: information });
+      return res.status(200).json({ result: "Yêu cầu thành công", data: information });
     })
     .catch((error) => {
       return res.status(400).json({ result: error.message });

@@ -22,10 +22,10 @@ export const logoutService = (req, res) => {
   repository
     .logout(request)
     .then(() => {
-      return res.status(200).json({ result: "Success" });
+      return res.status(200).json({ result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ error: error.message });
+      return res.status(400).json({ result: error.message });
     });
 };
 import { generateAccessJWT } from "../../utils/jwt.js";
@@ -39,7 +39,8 @@ export const tokenService = (req, res) => {
     .then(() => {
       const accessToken = generateAccessJWT(req.body.payload);
       return res.status(200).json({
-        result: accessToken,
+        result: "Yêu cầu thành công",
+        data: accessToken,
       });
     })
     .catch((error) => {
@@ -57,7 +58,7 @@ export const changeService = (req, res) => {
   repository
     .change(request)
     .then(() => {
-      return res.status(200).json({ result: "Success" });
+      return res.status(200).json({ result: "Yêu cầu thành công" });
     })
     .catch((error) => {
       return res.status(400).json({
@@ -82,11 +83,9 @@ export const missingService = (req, res) => {
       );
     })
     .then(() => {
-      return res
-        .status(200)
-        .json({
-          result: "Thành công, kiểm tra mã xác thực trong email của bạn",
-        });
+      return res.status(200).json({
+        result: "Thành công, kiểm tra mã xác thực trong email của bạn",
+      });
     })
     .catch((error) => {
       return res.status(400).json({
@@ -104,15 +103,13 @@ export const confirmService = (req, res) => {
     .then((response) => {
       return sendEmail(
         response.email,
-        `Mạt khẩu mới của bạn là : ${response.password},`
+        `Mật khẩu mới của bạn là : ${response.password},`
       );
     })
     .then(() => {
-      return res
-        .status(200)
-        .json({
-          result: "Thành công, kiểm tra mật khẩu mới trong email của bạn",
-        });
+      return res.status(200).json({
+        result: "Thành công, kiểm tra mật khẩu mới trong email của bạn",
+      });
     })
     .catch((error) => {
       return res.status(400).json({

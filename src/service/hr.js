@@ -26,7 +26,7 @@ export const updatePermissionOfEmployService = (req, res) => {
   repository
     .updatePermissionOfEmploy(request)
     .then(() => {
-      return res.status(200).json({ result: "Thành công" });
+      return res.status(200).json({ result: "Yêu cầu thành công" });
     })
     .catch((error) => {
       return res.status(400).json({ result: error.message });
@@ -40,7 +40,7 @@ export const removeEmployService = (req, res) => {
       req.body.payload.permission
     )
     .then(() => {
-      return res.status(200).json({ result: "Thành công" });
+      return res.status(200).json({ result: "Yêu cầu thành công" });
     })
     .catch((error) => {
       return res.status(400).json({ result: error.message });
@@ -54,7 +54,7 @@ export const updateSalaryOfEmployService = (req, res) => {
   repository
     .updateSalaryOfEmploy(request)
     .then(() => {
-      return res.status(200).json({ result: "Thành công" });
+      return res.status(200).json({ result: "Yêu cầu thành công" });
     })
     .catch((error) => {
       return res.status(400).json({ result: error.message });
@@ -65,7 +65,9 @@ export const showInformationEmployService = (req, res) => {
   repository
     .showInformationEmploy(req.query)
     .then((employ) => {
-      return res.status(200).json({ result: employ });
+      return res
+        .status(200)
+        .json({ result: "Yêu cầu thành công", data: employ });
     })
     .catch((error) => {
       return res.status(400).json({ result: error.message });
