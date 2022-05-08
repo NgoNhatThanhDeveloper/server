@@ -24,7 +24,6 @@ app.get("/image/:id", (req, res) => {
       }
     })
     .catch((err) => {
-      console.log(err);
       res.status(403).send(err.message);
     });
 });

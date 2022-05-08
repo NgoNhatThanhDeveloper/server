@@ -18,8 +18,6 @@ export const mUpdate = (req, res, next) => {
     validate.validatePhone(req.body.phone) ||
     validate.validateString(req.body.address)
   ) {
-    console.log(validate.validatePhone(req.body.phone));
-    console.log(validate.validateString(req.body.address));
     req.body.update = {};
     if (req.body.phone) {
       req.body.update.phone = req.body.phone;

@@ -97,12 +97,7 @@ export const createSHOP = (shopJson, files) => {
         resolve();
       })
       .catch((error) => {
-        console.log(error);
-        if (error.message != "Cửa hàng đã tồn tại") {
-          reject(new Error("Đã có lỗi phát sinh"));
-        } else {
-          reject(error);
-        }
+        reject(new Error("Đã có lỗi phát sinh"));
       });
   });
 };
