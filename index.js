@@ -14,9 +14,11 @@ app.use("/api/v1/",function(req, res,next){
   console.log(req.params);
   console.log(req.query);
   console.log(req.files);
-  console.log(req.files.length);
   next()
 }, routerApp);
+app.get("/",(req, res)=>{
+  res.send("website action........................")
+})
 app.get("/image/:id", (req, res) => {
   Image.findOne({ _id: req.params.id })
     .exec()
