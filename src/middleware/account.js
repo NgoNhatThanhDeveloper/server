@@ -3,14 +3,14 @@ export const mReplaceEmail = (req, res, next) => {
   if (validate.validateEmail(req.body.email)) {
     next();
   } else {
-    return res.status(400).json({ success: false ,result: "Dữ liệu gửi lên còn thiếu" });
+    return res.status(200).json({ success: false ,result: "Dữ liệu gửi lên còn thiếu" });
   }
 };
 export const mConfirmEmail = (req, res, next) => {
   if (req.body.code) {
     next();
   } else {
-    return res.status(400).json({ success: false, result: "Dữ liệu gửi lên còn thiếu" });
+    return res.status(200).json({ success: false, result: "Dữ liệu gửi lên còn thiếu" });
   }
 };
 export const mUpdate = (req, res, next) => {
@@ -27,7 +27,7 @@ export const mUpdate = (req, res, next) => {
     next();
   } else {
     return res
-      .status(400)
+      .status(200)
       .json({ success: false ,result: "Dữ liệu gửi lên còn thiếu hoặc không hợp lệ" });
   }
 };

@@ -9,7 +9,7 @@ export const updateAvatarService = (req, res) => {
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const showInformationService = (req, res) => {
@@ -23,7 +23,7 @@ export const showInformationService = (req, res) => {
       });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const requestEmailService = (req, res) => {
@@ -43,7 +43,7 @@ export const requestEmailService = (req, res) => {
       });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const confirmEmailService = (req, res) => {
@@ -56,7 +56,7 @@ export const confirmEmailService = (req, res) => {
       });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const replaceEmailService = (req, res) => {
@@ -70,7 +70,7 @@ export const replaceEmailService = (req, res) => {
       });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const updateInformationService = (req, res) => {
@@ -82,6 +82,6 @@ export const updateInformationService = (req, res) => {
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };

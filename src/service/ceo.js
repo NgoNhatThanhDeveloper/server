@@ -13,7 +13,7 @@ export const createHRService = (req, res) => {
       return res.status(200).json({ success: true, result: "Thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const createShopService = (req, res) => {
@@ -23,7 +23,7 @@ export const createShopService = (req, res) => {
       return res.status(200).json({ success: true, result: "Thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const replaceHRService = (req, res) => {
@@ -39,7 +39,7 @@ export const replaceHRService = (req, res) => {
       return res.status(200).json({ success: true, result: "Thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const removeSHOPService = (req, res) => {
@@ -49,7 +49,7 @@ export const removeSHOPService = (req, res) => {
       return res.status(200).json({ success: true, result: "Thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const removeHRService = (req, res) => {
@@ -59,7 +59,7 @@ export const removeHRService = (req, res) => {
       return res.status(200).json({ success: true, result: "Thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const updateSalaryHRService = (req, res) => {
@@ -69,7 +69,7 @@ export const updateSalaryHRService = (req, res) => {
       return res.status(200).json({ success: true, result: "Thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const showHRService = (req, res) => {
@@ -82,7 +82,7 @@ export const showHRService = (req, res) => {
         .json({ success: true, result: "Yêu cầu thành công", data: hr });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const showShopService = (req, res) => {
@@ -94,6 +94,6 @@ export const showShopService = (req, res) => {
         .json({ success: true, result: "Yêu cầu thành công", data: shop });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };

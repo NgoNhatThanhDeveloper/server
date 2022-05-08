@@ -13,7 +13,7 @@ export const loginService = (req, res) => {
       });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const logoutService = (req, res) => {
@@ -29,7 +29,7 @@ export const logoutService = (req, res) => {
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 import { generateAccessJWT } from "../../utils/jwt.js";
@@ -51,7 +51,7 @@ export const tokenService = (req, res) => {
         });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const changeService = (req, res) => {
@@ -68,7 +68,7 @@ export const changeService = (req, res) => {
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 import { sendEmail } from "../../utils/sendEmail.js";
@@ -96,7 +96,7 @@ export const missingService = (req, res) => {
         });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const confirmService = (req, res) => {
@@ -121,6 +121,6 @@ export const confirmService = (req, res) => {
         });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };

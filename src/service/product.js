@@ -12,7 +12,7 @@ export const createProductService = (req, res) => {
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const updateProductService = (req, res) => {
@@ -29,7 +29,7 @@ export const updateProductService = (req, res) => {
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const updateImageProductService = (req, res) => {
@@ -46,7 +46,7 @@ export const updateImageProductService = (req, res) => {
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const removeProductService = (req, res) => {
@@ -62,7 +62,7 @@ export const removeProductService = (req, res) => {
         .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
 export const showProductService = (req, res) => {
@@ -78,6 +78,6 @@ export const showProductService = (req, res) => {
         .json({ success: true, result: "Yêu cầu thành công", data: product });
     })
     .catch((error) => {
-      return res.status(400).json({ success: false, result: error.message });
+      return res.status(200).json({ success: false, result: error.message });
     });
 };
