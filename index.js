@@ -9,7 +9,14 @@ import connectToMongodb from "./config/mongo.js";
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use("/api/v1/", routerApp);
+app.use("/api/v1/",function(req, res,next){
+  console.log(req.body);
+  console.log(req.params);
+  console.log(req.query);
+  console.log(req.files);
+  console.log(req.files.length);
+  next()
+}, routerApp);
 app.get("/image/:id", (req, res) => {
   Image.findOne({ _id: req.params.id })
     .exec()
