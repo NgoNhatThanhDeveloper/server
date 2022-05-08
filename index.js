@@ -17,13 +17,14 @@ app.get("/image/:id", (req, res) => {
       if (image) {
         const buffer = image.data;
         const contentType = image.contentType;
-        res.contentType(contentType);
+        res.contentType(contentType || "image/png");
         res.send(buffer);
       } else {
         res.status(403).send("Image not exist !");
       }
     })
     .catch((err) => {
+      console.log(err);
       res.status(403).send(err.message);
     });
 });
