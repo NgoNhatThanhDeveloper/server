@@ -1,0 +1,15 @@
+import express from "express";
+import authentication from "./authentication.js";
+import ceo from "./ceo.js";
+import sale from "./sale.js";
+import product from "./product.js";
+import hr from "./hr.js";
+import account from "./account.js";
+const router = express.Router();
+router.use("/authentication/", authentication);
+router.use("/ceo/", ceo);
+router.use("/account/", account);
+router.use("/hr/", hr);
+router.use("/sale/", sale);
+router.use("/product/", product);
+export default router;
