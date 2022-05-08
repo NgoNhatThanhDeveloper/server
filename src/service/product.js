@@ -7,10 +7,12 @@ export const createProductService = (req, res) => {
   repository
     .createProduct(request)
     .then(() => {
-      return res.status(200).json({ result: "Yêu cầu thành công" });
+      return res
+        .status(200)
+        .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ result: error.message });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };
 export const updateProductService = (req, res) => {
@@ -22,10 +24,12 @@ export const updateProductService = (req, res) => {
   repository
     .updateProduct(request)
     .then(() => {
-      return res.status(200).json({ result: "Yêu cầu thành công" });
+      return res
+        .status(200)
+        .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ result: error.message });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };
 export const updateImageProductService = (req, res) => {
@@ -37,10 +41,12 @@ export const updateImageProductService = (req, res) => {
   repository
     .updateImageProduct(request)
     .then(() => {
-      return res.status(200).json({ result: "Yêu cầu thành công" });
+      return res
+        .status(200)
+        .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ result: error.message });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };
 export const removeProductService = (req, res) => {
@@ -51,10 +57,12 @@ export const removeProductService = (req, res) => {
   repository
     .removeProduct(request)
     .then(() => {
-      return res.status(200).json({ result: "Yêu cầu thành công" });
+      return res
+        .status(200)
+        .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ result: error.message });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };
 export const showProductService = (req, res) => {
@@ -67,9 +75,9 @@ export const showProductService = (req, res) => {
     .then((product) => {
       return res
         .status(200)
-        .json({ result: "Yêu cầu thành công", data: product });
+        .json({ success: true, result: "Yêu cầu thành công", data: product });
     })
     .catch((error) => {
-      return res.status(400).json({ result: error.message });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };

@@ -5,7 +5,7 @@ export const mPermission = (req, res, next) => {
   } else {
     return res
       .status(400)
-      .json({ result: "You do not have the right to use this function" });
+      .json({ success: false,result: "You do not have the right to use this function" });
   }
 };
 export const mCreate = (req, res, next) => {
@@ -39,12 +39,12 @@ export const mCreate = (req, res, next) => {
     if (req.body.permission == ("ceo", "hr")) {
       return res
         .status(400)
-        .json({ result: "you can't create this permission" });
+        .json({success: false, result: "you can't create this permission" });
     } else {
       next();
     }
   } else {
-    return res.status(400).json({ result: "Data left empty" });
+    return res.status(400).json({ success: false,result: "Data left empty" });
   }
 };
 export const mUpdatePermissions = (req, res, next) => {
@@ -52,18 +52,18 @@ export const mUpdatePermissions = (req, res, next) => {
     if (req.body.permission == "ceo" || req.body.permission == "hr") {
       return res
         .status(400)
-        .json({ result: "you can't create this permission" });
+        .json({ success: false,result: "you can't create this permission" });
     } else {
       next();
     }
   } else {
-    return res.status(400).json({ result: "Data left empty" });
+    return res.status(400).json({success: false, result: "Data left empty" });
   }
 };
 export const mUpdateSalary = (req, res, next) => {
   if (req.body.salary) {
     next();
   } else {
-    return res.status(400).json({ result: "Data left empty" });
+    return res.status(400).json({success: false, result: "Data left empty" });
   }
 };

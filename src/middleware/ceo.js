@@ -3,7 +3,7 @@ export const mPermission = (req, res, next) => {
   if (req.body.payload.permission == "ceo") {
     next();
   } else {
-    return res.status(400).json({
+    return res.status(400).json({success: false,
       result: "Bạn không thể tạo vị trí làm việc này do không đủ quyền hạn",
     });
   }
@@ -35,7 +35,7 @@ export const mCreateHR = (req, res, next) => {
       },
     };
     if (req.body.permission == ("ceo", "hr")) {
-      return res.status(400).json({
+      return res.status(400).json({success: false,
         result: "Bạn không thể tạo vị trí làm việc này do không đủ quyền hạn",
       });
     } else {
@@ -44,7 +44,7 @@ export const mCreateHR = (req, res, next) => {
   } else {
     return res
       .status(400)
-      .json({ result: "Dữ liệu gửi lên còn trống hoặc không hợp lệ" });
+      .json({success: false, result: "Dữ liệu gửi lên còn trống hoặc không hợp lệ" });
   }
 };
 export const mCreateSHOP = (req, res, next) => {
@@ -64,7 +64,7 @@ export const mCreateSHOP = (req, res, next) => {
   } else {
     return res
       .status(401)
-      .json({ result: "Dữ liệu gửi lên còn trống hoặc không hợp lệ" });
+      .json({success: false, result: "Dữ liệu gửi lên còn trống hoặc không hợp lệ" });
   }
 };
 export const mReplaceHR = (req, res, next) => {
@@ -73,7 +73,7 @@ export const mReplaceHR = (req, res, next) => {
   } else {
     return res
       .status(401)
-      .json({ result: "Dữ liệu gửi lên còn trống hoặc không hợp lệ" });
+      .json({ success: false,result: "Dữ liệu gửi lên còn trống hoặc không hợp lệ" });
   }
 };
 export const mUpdateSalary = (req, res, next) => {
@@ -82,6 +82,6 @@ export const mUpdateSalary = (req, res, next) => {
   } else {
     return res
       .status(401)
-      .json({ result: "Dữ liệu gửi lên còn trống hoặc không hợp lệ" });
+      .json({ success: false,result: "Dữ liệu gửi lên còn trống hoặc không hợp lệ" });
   }
 };

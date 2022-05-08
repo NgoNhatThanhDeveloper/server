@@ -4,7 +4,7 @@ export const mPermission = (req, res, next) => {
   ) {
     next();
   } else {
-    return res.status(403).json({
+    return res.status(403).json({success: false,
       result: "You can't use this function ",
     });
   }
@@ -26,7 +26,7 @@ export const mCreate = (req, res, next) => {
     }
     next();
   } else {
-    return res.status(403).json({
+    return res.status(403).json({success: false,
       result: "Data left empty",
     });
   }
@@ -47,7 +47,7 @@ export const mUpdate = (req, res, next) => {
     }
     next();
   } else {
-    return res.status(403).json({
+    return res.status(403).json({success: false,
       result: "Data left empty",
     });
   }

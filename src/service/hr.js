@@ -12,10 +12,13 @@ export const createEmployService = (req, res) => {
     .then(() => {
       return res
         .status(200)
-        .json({ result: "Thành công, đã thông báo đến nhân viên qua email" });
+        .json({
+          success: true,
+          result: "Thành công, đã thông báo đến nhân viên qua email",
+        });
     })
     .catch((error) => {
-      return res.status(400).json({ result: error.message });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };
 export const updatePermissionOfEmployService = (req, res) => {
@@ -26,10 +29,12 @@ export const updatePermissionOfEmployService = (req, res) => {
   repository
     .updatePermissionOfEmploy(request)
     .then(() => {
-      return res.status(200).json({ result: "Yêu cầu thành công" });
+      return res
+        .status(200)
+        .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ result: error.message });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };
 export const removeEmployService = (req, res) => {
@@ -40,10 +45,12 @@ export const removeEmployService = (req, res) => {
       req.body.payload.permission
     )
     .then(() => {
-      return res.status(200).json({ result: "Yêu cầu thành công" });
+      return res
+        .status(200)
+        .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ result: error.message });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };
 export const updateSalaryOfEmployService = (req, res) => {
@@ -54,10 +61,12 @@ export const updateSalaryOfEmployService = (req, res) => {
   repository
     .updateSalaryOfEmploy(request)
     .then(() => {
-      return res.status(200).json({ result: "Yêu cầu thành công" });
+      return res
+        .status(200)
+        .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ result: error.message });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };
 export const showInformationEmployService = (req, res) => {
@@ -67,9 +76,9 @@ export const showInformationEmployService = (req, res) => {
     .then((employ) => {
       return res
         .status(200)
-        .json({ result: "Yêu cầu thành công", data: employ });
+        .json({ success: true, result: "Yêu cầu thành công", data: employ });
     })
     .catch((error) => {
-      return res.status(400).json({ result: error.message });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };

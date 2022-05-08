@@ -3,9 +3,9 @@ export const mPermission = (req, res, next) => {
   if (req.body.payload.permission == "sales manager") {
     next();
   } else {
-    return res.status(403).json({
-      result: "Bạn không thể sử dụng chức năng này",
-    });
+    return res
+      .status(403)
+      .json({ success: false, result: "Bạn không thể sử dụng chức năng này" });
   }
 };
 export const mCreateBill = (req, res, next) => {
@@ -23,9 +23,9 @@ export const mCreateBill = (req, res, next) => {
     }
     next();
   } else {
-    return res.status(403).json({
-      result: "Dữ liệu yêu cầu còn thiếu",
-    });
+    return res
+      .status(403)
+      .json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
   }
 };
 export const mCreateCustomer = (req, res, next) => {
@@ -47,18 +47,18 @@ export const mCreateCustomer = (req, res, next) => {
     req.body.customer = customer;
     next();
   } else {
-    return res.status(403).json({
-      result: "Dữ liệu yêu cầu còn thiếu",
-    });
+    return res
+      .status(403)
+      .json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
   }
 };
 export const mUpdateVoucherOfBilling = (req, res, next) => {
   if (req.body.voucher) {
     next();
   } else {
-    return res.status(403).json({
-      result: "Dữ liệu yêu cầu còn thiếu",
-    });
+    return res
+      .status(403)
+      .json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
   }
 };
 export const mCreateVoucher = (req, res, next) => {
@@ -82,8 +82,8 @@ export const mCreateVoucher = (req, res, next) => {
     }
     next();
   } else {
-    return res.status(403).json({
-      result: "Dữ liệu yêu cầu còn thiếu",
-    });
+    return res
+      .status(403)
+      .json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
   }
 };

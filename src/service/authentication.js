@@ -7,11 +7,13 @@ export const loginService = (req, res) => {
     .login(request)
     .then((response) => {
       return res.status(200).json({
-        result: response,
+        success: true,
+        result: "Yêu cầu thành công",
+        data: response,
       });
     })
     .catch((error) => {
-      return res.status(400).json(error.message);
+      return res.status(400).json({ success: false, result: error.message });
     });
 };
 export const logoutService = (req, res) => {
@@ -22,10 +24,12 @@ export const logoutService = (req, res) => {
   repository
     .logout(request)
     .then(() => {
-      return res.status(200).json({ result: "Yêu cầu thành công" });
+      return res
+        .status(200)
+        .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({ result: error.message });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };
 import { generateAccessJWT } from "../../utils/jwt.js";
@@ -38,15 +42,16 @@ export const tokenService = (req, res) => {
     .token(request)
     .then(() => {
       const accessToken = generateAccessJWT(req.body.payload);
-      return res.status(200).json({
-        result: "Yêu cầu thành công",
-        data: accessToken,
-      });
+      return res
+        .status(200)
+        .json({
+          success: true,
+          result: "Yêu cầu thành công",
+          data: accessToken,
+        });
     })
     .catch((error) => {
-      return res.status(400).json({
-        result: error.message,
-      });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };
 export const changeService = (req, res) => {
@@ -58,12 +63,12 @@ export const changeService = (req, res) => {
   repository
     .change(request)
     .then(() => {
-      return res.status(200).json({ result: "Yêu cầu thành công" });
+      return res
+        .status(200)
+        .json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      return res.status(400).json({
-        result: error.message,
-      });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };
 import { sendEmail } from "../../utils/sendEmail.js";
@@ -83,14 +88,15 @@ export const missingService = (req, res) => {
       );
     })
     .then(() => {
-      return res.status(200).json({
-        result: "Thành công, kiểm tra mã xác thực trong email của bạn",
-      });
+      return res
+        .status(200)
+        .json({
+          success: true,
+          result: "Thành công, kiểm tra mã xác thực trong email của bạn",
+        });
     })
     .catch((error) => {
-      return res.status(400).json({
-        result: error.message,
-      });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };
 export const confirmService = (req, res) => {
@@ -107,13 +113,14 @@ export const confirmService = (req, res) => {
       );
     })
     .then(() => {
-      return res.status(200).json({
-        result: "Thành công, kiểm tra mật khẩu mới trong email của bạn",
-      });
+      return res
+        .status(200)
+        .json({
+          success: true,
+          result: "Thành công, kiểm tra mật khẩu mới trong email của bạn",
+        });
     })
     .catch((error) => {
-      return res.status(400).json({
-        result: error.message,
-      });
+      return res.status(400).json({ success: false, result: error.message });
     });
 };
