@@ -5,7 +5,12 @@ import * as mMiddleware from "../middleware/product.js";
 import * as mController from "../controller/product.js";
 import multer from "multer";
 const upload = multer({ storage: multer.memoryStorage() });
-router.get("/show/query", mToken.mAccessToken, mController.showProductCtrl);
+router.get(
+  "/show/query",
+  upload.none(),
+  mToken.mAccessToken,
+  mController.showProductCtrl
+);
 router.post(
   "/create",
   upload.array("product", 10),
@@ -23,6 +28,7 @@ router.post(
 );
 router.post(
   "/:id/update",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mPermission,
   mMiddleware.mUpdate,
@@ -30,6 +36,7 @@ router.post(
 );
 router.delete(
   "/:id/delete",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mPermission,
   mController.removeProductCtrl

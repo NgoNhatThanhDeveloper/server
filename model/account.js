@@ -49,7 +49,6 @@ const accountSchema = new mongoose.Schema({
     type: String,
     enum: [
       "ceo",
-      "branch management",
       "hr",
       "product management",
       "sales manager",

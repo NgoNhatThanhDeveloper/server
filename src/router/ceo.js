@@ -27,18 +27,26 @@ router.post(
 );
 router.put(
   "/HR/salary/:id/update",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mUpdateSalary,
   mController.updateSalaryOfHrCtr
 );
-router.delete("/HR/:id/remove", mToken.mAccessToken, mController.removeHrCtr);
+router.delete(
+  "/HR/:id/remove",
+  upload.none(),
+  mToken.mAccessToken,
+  mController.removeHrCtr
+);
 router.delete(
   "/shop/:id/remove",
+  upload.none(),
   mToken.mAccessToken,
   mController.removeShopCtr
 );
 router.put(
   "/shop/replace",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mReplaceHR,
   mController.replaceHRCtrl

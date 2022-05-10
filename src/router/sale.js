@@ -7,24 +7,28 @@ import * as mMiddleware from "../middleware/sale.js";
 import * as mController from "../controller/sale.js";
 router.get(
   "/voucher/query",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mPermission,
   mController.showVoucherCtrl
 );
 router.get(
   "/payment/query",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mPermission,
   mController.showPaymentCtrl
 );
 router.get(
   "/bill/query",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mPermission,
   mController.showBillCtrl
 );
 router.post(
   "/voucher/create",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mPermission,
   mMiddleware.mCreateVoucher,
@@ -45,6 +49,7 @@ router.post(
 );
 router.post(
   "/bill/create",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mPermission,
   mMiddleware.mCreateBill,
@@ -52,18 +57,21 @@ router.post(
 );
 router.delete(
   "/voucher/:id/remove",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mPermission,
   mController.removeVoucherCtrl
 );
 router.delete(
   "/bill/:id/remove",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mPermission,
   mController.removeBillCtrl
 );
 router.put(
   "/bill/voucher",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mPermission,
   mController.updateVoucherOfBillCtrl

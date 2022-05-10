@@ -1,24 +1,18 @@
 import express from "express";
-const app = express();
-import bodyParser from "body-parser";
+import http from "http";
 import Image from "./model/image.js";
-import routerApp from "./src/router/index.js";
+import router from "./src/router/index.js";
 import dotenv from "dotenv";
-dotenv.config();
 import connectToMongodb from "./config/mongo.js";
+
+dotenv.config();
+const app = express();
+const server = http.createServer(app);
+
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use("/api/v1/",function(req, res,next){
-  console.log(req.body);
-  console.log(req.params);
-  console.log(req.query);
-  console.log(req.files);
-  next()
-}, routerApp);
-app.get("/",(req, res)=>{
-  res.send("website action........................")
-})
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use("/api/v1/", router);
 app.get("/image/:id", (req, res) => {
   Image.findOne({ _id: req.params.id })
     .exec()
@@ -36,6 +30,13 @@ app.get("/image/:id", (req, res) => {
       res.status(403).send(err.message);
     });
 });
-app.listen(process.env.PORT, (req, res) => {
-  connectToMongodb(req, res);
+server.listen(process.env.PORT, () => {
+  console.log(`listening on port ${process.env.PORT}`);
+  connectToMongodb()
+    .then(() => {
+      console.log("database connected");
+    })
+    .catch((err) => {
+      console.error(err.message);
+    });
 });

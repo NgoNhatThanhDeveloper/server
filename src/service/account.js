@@ -4,9 +4,7 @@ export const updateAvatarService = (req, res) => {
   repository
     .updateAvatar(req.body.payload.code, req.file)
     .then(() => {
-      return res
-        
-        .json({ success: true, result: "Yêu cầu thành công" });
+      return res.json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
       return res.json({ success: false, result: error.message });
@@ -77,9 +75,7 @@ export const updateInformationService = (req, res) => {
   repository
     .updateInformation(req.body.payload.code, req.body.update)
     .then(() => {
-      return res
-        
-        .json({ success: true, result: "Yêu cầu thành công" });
+      return res.json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
       return res.json({ success: false, result: error.message });

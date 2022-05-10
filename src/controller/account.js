@@ -17,3 +17,6 @@ export const replaceEmailCtrl = (req, res) => {
 export const updateInformationCtrl = (req, res) => {
   service.updateInformationService(req, res);
 };
+export const showListChatCtrl = (req, res) => {
+  service.showListChatService(req, res);
+}

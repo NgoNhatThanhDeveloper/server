@@ -7,6 +7,7 @@ import multer from "multer";
 const upload = multer({ storage: multer.memoryStorage() });
 router.get(
   "/employ/query",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mPermission,
   mController.showInformationEmployCtrl
@@ -25,6 +26,7 @@ router.post(
 );
 router.put(
   "/employ/:id/update",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mPermission,
   mMiddleware.mUpdatePermissions,
@@ -32,10 +34,16 @@ router.put(
 );
 router.put(
   "/salary/:id/update",
+  upload.none(),
   mToken.mAccessToken,
   mMiddleware.mPermission,
   mMiddleware.mUpdateSalary,
   mController.updateSalaryOfEmployCtrl
 );
-router.delete("/:id/remove", mToken.mAccessToken, mController.removeEmployCtrl);
+router.delete(
+  "/:id/remove",
+  upload.none(),
+  mToken.mAccessToken,
+  mController.removeEmployCtrl
+);
 export default router;
