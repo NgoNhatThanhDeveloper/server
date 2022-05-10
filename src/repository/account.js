@@ -77,7 +77,7 @@ export const showInformation = (account_id) => {
               boss: account.shop.HR.information.name,
             },
           };
-          resolve(account);
+          resolve(result);
         } else {
           reject(new Error("Tài khoản không tồn tại"));
         }
