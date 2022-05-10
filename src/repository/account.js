@@ -60,7 +60,7 @@ export const showInformation = (account_id) => {
               _id: account._id,
               permission: account.permission,
               email: account.authenticator.email,
-              code: account.information.phone,
+              code: account.information.cardID.code,
               front: account.information.cardID.front,
               back: account.information.cardID.back,
               name: account.information.name,
