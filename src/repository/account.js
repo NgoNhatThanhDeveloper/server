@@ -55,6 +55,34 @@ export const showInformation = (account_id) => {
       .exec()
       .then((account) => {
         if (account) {
+          const result = {
+            information: {
+              _id: "6276c453e09736acf758a0a6",
+              permission: "sales manager",
+              email: "nhatthanhdev200320@gmail.com",
+              code: "035211559857",
+              front: "6276c453e09736acf758a0a7",
+              back: "6276c453e09736acf758a0a8",
+              name: "NGÔ BẢO NGỌC",
+              address: "NAM HƯNG-TIỀN HẢI-THÁI BÌNH",
+              phone: "0388279927",
+              avatar: "6276c453e09736acf758a0a9",
+            },
+            shop: {
+              _id: "62771e8fb022d5da1121dd8e",
+              name: "NGÔ BẢO NGỌC",
+              address: "NAM HƯNG-TIỀN HẢI-THÁI BÌNH",
+              image: [
+                "62771e8fb022d5da1121dd90",
+                "62771e8fb022d5da1121dd91",
+                "62771e8fb022d5da1121dd92",
+                "62771e8fb022d5da1121dd93",
+                "62771e8fb022d5da1121dd94",
+              ],
+              phone: "0388279925",
+              boss: "NGÔ BẢO NGỌC",
+            },
+          };
           resolve(account);
         } else {
           reject(new Error("Tài khoản không tồn tại"));
