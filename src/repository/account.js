@@ -47,7 +47,11 @@ export const showInformation = (account_id) => {
       { _id: account_id },
       "-password -createdAt -updatedAt -refreshToken -loginStatus -account"
     )
-      .populate({ path: "shop", select: "name phone address image" })
+      .populate({
+        path: "shop",
+        select: "name phone address image HR",
+        populate: { path: "HR", select: "information.name" },
+      })
       .exec()
       .then((account) => {
         if (account) {
