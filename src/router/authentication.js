@@ -6,9 +6,8 @@ import * as mController from "../controller/authentication.js";
 import multer from "multer";
 const upload = multer({ storage: multer.memoryStorage() });
 router.post("/login", upload.none(), mMiddleware.mLogin, mController.loginCtrl);
-router.get(
+router.post(
   "/logout",
-  upload.none(),
   mToken.mAccessTokenExp,
   mToken.mRefreshToken,
   mController.logoutCtrl
@@ -34,7 +33,6 @@ router.post(
 );
 router.get(
   "/token",
-  upload.none(),
   mMiddleware.mToken,
   mToken.mAccessTokenExp,
   mToken.mRefreshToken,
