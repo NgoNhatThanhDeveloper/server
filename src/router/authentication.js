@@ -8,8 +8,7 @@ const upload = multer({ storage: multer.memoryStorage() });
 router.post("/login", upload.none(), mMiddleware.mLogin, mController.loginCtrl);
 router.post(
   "/logout",
-  mToken.mAccessTokenExp,
-  mToken.mRefreshToken,
+  mToken.mAccessToken,
   mController.logoutCtrl
 );
 router.post(

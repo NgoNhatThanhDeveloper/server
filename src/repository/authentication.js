@@ -7,34 +7,26 @@ export const login = (request) => {
       .then((account) => {
         const isMatch = account.comparePassword(request.query.password);
         if (isMatch) {
-          if (account.loginStatus === false) {
-            const accessToken = jwt.generateAccessJWT({
-              code: account._id,
-              permission: account.permission,
-              shop: account.shop,
-            });
-            const refreshToken = jwt.generateRefreshJWT({
-              code: account._id,
-              email: account.authenticator.email,
-              secret: Date.now(),
-            });
-            account.refreshToken = refreshToken;
-            account.loginStatus = true;
-            return new Promise((resolve) => {
-              account.save().then(() => {
-                resolve({
-                  accessToken: accessToken,
-                  refreshToken: refreshToken,
-                });
+          const accessToken = jwt.generateAccessJWT({
+            code: account._id,
+            permission: account.permission,
+            shop: account.shop,
+          });
+          const refreshToken = jwt.generateRefreshJWT({
+            code: account._id,
+            email: account.authenticator.email,
+            secret: Date.now(),
+          });
+          account.refreshToken = refreshToken;
+          account.loginStatus = true;
+          return new Promise((resolve) => {
+            account.save().then(() => {
+              resolve({
+                accessToken: accessToken,
+                refreshToken: refreshToken,
               });
             });
-          } else {
-            reject(
-              new Error(
-                "Tài khoản của bạn đã được đăng nhập ở một nơi khác, nếu không phải là bạn, chọn xác thực lại tài khoản"
-              )
-            );
-          }
+          });
         } else {
           reject(new Error("Mật khẩu không chính xác"));
         }
@@ -51,17 +43,9 @@ export const logout = (request) => {
   return new Promise((resolve, reject) => {
     findAccount({ _id: request._id })
       .then((account) => {
-        if (account.refreshToken == request.refreshToken) {
-          if (account.loginStatus) {
-            account.loginStatus = false;
-            account.refreshToken = null;
-            return account.save();
-          } else {
-            reject(new Error("Tài khoản đã được đăng xuất"));
-          }
-        } else {
-          reject(new Error("Mã phiên xác thực không hợp lệ"));
-        }
+        account.loginStatus = false;
+        account.refreshToken = null;
+        return account.save();
       })
       .then(() => resolve())
       .catch((error) => {

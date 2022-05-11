@@ -19,7 +19,6 @@ export const loginService = (req, res) => {
 export const logoutService = (req, res) => {
   const request = {
     _id: req.body.payload.code,
-    refreshToken: req.headers.refresh_token,
   };
   repository
     .logout(request)
