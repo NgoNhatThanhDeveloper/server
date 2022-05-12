@@ -7,9 +7,6 @@ export const transporterSetup = () => {
       user: process.env.email,
       pass: process.env.password,
     },
-    tls: {
-      rejectUnauthorized: false,
-    },
   };
 };
 export const mainOptionsSetup = (email, title, textContent) => {

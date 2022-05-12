@@ -114,7 +114,6 @@ export const showPaymentService = (req, res) => {
     .showPayment(req.query)
     .then((payments) => {
       return res
-        
         .json({ success: true, result: "Yêu cầu thành công", data: payments });
     })
     .catch((error) => {

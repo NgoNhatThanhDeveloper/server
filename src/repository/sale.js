@@ -239,11 +239,20 @@ export const updatePayment = (customer_id, shop, total_add, paid_add) => {
 export const showPayment = (query) => {
   return new Promise((resolve, reject) => {
     Payment.find(query)
-      .populate("_id")
+      .populate({path : "_id",select : "name avatar"})
       .exec()
       .then((payments) => {
-        if (payment.length > 0) {
-          resolve(payments);
+        if (payments.length > 0) {
+         const result =  payments.map(pay => {
+            return {
+              _id : pay._id._id,
+              customer : pay._id.name,
+              avatar : pay._id.avatar,
+              total : pay.total, 
+              paid : pay.paid
+            }
+          })
+          resolve(result);
         } else {
           reject(new Error("Không tìm thấy sổ ghi nợ"));
         }
