@@ -12,7 +12,14 @@ const server = http.createServer(app);
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/api/v1/", router);
+app.use("/api/v1/",(req, res,next) => {
+  console.log(req.body);
+  console.log(req.params)
+  console.log(req.query)
+  console.log(req.files)
+  console.log(req.file)
+  next()
+}, router);
 app.get("/image/:id", (req, res) => {
   Image.findOne({ _id: req.params.id })
     .exec()
