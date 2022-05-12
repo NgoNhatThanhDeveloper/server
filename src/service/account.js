@@ -78,6 +78,7 @@ export const updateInformationService = (req, res) => {
       return res.json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
+      console.log(error)
       return res.json({ success: false, result: error.message });
     });
 };
