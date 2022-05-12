@@ -75,10 +75,11 @@ export const updateInformationService = (req, res) => {
   repository
     .updateInformation(req.body.payload.code, req.body.update)
     .then(() => {
+      console.log("ok")
       return res.json({ success: true, result: "Yêu cầu thành công" });
     })
     .catch((error) => {
-      console.log(error)
+     console.error(error)
       return res.json({ success: false, result: error.message });
     });
 };

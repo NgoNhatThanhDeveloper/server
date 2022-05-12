@@ -27,7 +27,6 @@ export const mUpdate = (req, res, next) => {
     next();
   } else {
     return res
-      
       .json({ success: false ,result: "Dữ liệu gửi lên còn thiếu hoặc không hợp lệ" });
   }
 };
