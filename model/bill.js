@@ -1,30 +1,19 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
-const billSchema = new mongoose.Schema(
-  {
+const billSchema = new mongoose.Schema({
     _id: { type: mongoose.Schema.Types.ObjectId },
     customer: {
-      type: String,
-      maxLength: 100,
-      validate: {
-        validator: (input) => {
-          return validate.validateString(input);
-        },
-        message: (props) => `${props.value} không hợp lệ !`,
-      },
+        type: String,
+        maxLength: 100,
     },
     voucher: { type: mongoose.Schema.Types.ObjectId, ref: "Voucher" },
     shop: { type: mongoose.Schema.Types.ObjectId, ref: "Shop" },
-    product: [
-      {
+    product: [{
         _id: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
         number: { type: Number, min: 1 },
-      },
-    ],
+    }, ],
     total: { type: Number, min: 1000 },
-  },
-  { timestamps: true }
-);
+}, { timestamps: true });
 billSchema.plugin(mongoosePaginate);
 const Bill = mongoose.model("Bill", billSchema);
 Bill.createCollection();

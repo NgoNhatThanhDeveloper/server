@@ -3,16 +3,14 @@ export const mPermission = (req, res, next) => {
     if (req.body.payload.permission == "sales manager") {
         next();
     } else {
-        return res
-
-            .json({ success: false, result: "Bạn không thể sử dụng chức năng này" });
+        return res.json({
+            success: false,
+            result: "Bạn không thể sử dụng chức năng này",
+        });
     }
 };
 export const mCreateBill = (req, res, next) => {
-    if (
-        validate.validateString(req.body.customer) &&
-        req.body.product
-    ) {
+    if (validate.validateString(req.body.customer) && req.body.product) {
         if (req.body.product.length > 0) {
             req.body.bill = {
                 customer: req.body.customer,
@@ -22,16 +20,16 @@ export const mCreateBill = (req, res, next) => {
             if (req.body.voucher) {
                 req.body.bill.voucher = req.body.voucher;
             }
+            console.log(req.body.bill);
             next();
         } else {
-            return res
-
-                .json({ success: false, result: "Dach sách sản phẩm còn trống" });
+            return res.json({
+                success: false,
+                result: "Dach sách sản phẩm còn trống",
+            });
         }
     } else {
-        return res
-
-            .json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
+        return res.json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
     }
 };
 export const mCreateCustomer = (req, res, next) => {
@@ -53,18 +51,14 @@ export const mCreateCustomer = (req, res, next) => {
         req.body.customer = customer;
         next();
     } else {
-        return res
-
-            .json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
+        return res.json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
     }
 };
 export const mUpdateVoucherOfBilling = (req, res, next) => {
     if (req.body.voucher) {
         next();
     } else {
-        return res
-
-            .json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
+        return res.json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
     }
 };
 export const mCreateVoucher = (req, res, next) => {
@@ -88,8 +82,6 @@ export const mCreateVoucher = (req, res, next) => {
         }
         next();
     } else {
-        return res
-
-            .json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
+        return res.json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
     }
 };
