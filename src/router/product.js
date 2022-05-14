@@ -6,39 +6,39 @@ import * as mController from "../controller/product.js";
 import multer from "multer";
 const upload = multer({ storage: multer.memoryStorage() });
 router.get(
-  "/show/query",
-  upload.none(),
-  mToken.mAccessToken,
-  mController.showProductCtrl
+    "/show/query",
+    upload.none(),
+    mToken.mAccessToken,
+    mController.showProductCtrl
 );
 router.post(
-  "/create",
-  upload.array("product", 10),
-  mToken.mAccessToken,
-  mMiddleware.mPermission,
-  mMiddleware.mCreate,
-  mController.createProductCtrl
+    "/create",
+    upload.array("product", 10),
+    mToken.mAccessToken,
+    mMiddleware.mPermission,
+    mMiddleware.mCreate,
+    mController.createProductCtrl
 );
 router.post(
-  "/:id/image/update",
-  upload.array("product", 10),
-  mToken.mAccessToken,
-  mMiddleware.mPermission,
-  mController.updateImageProductCtrl
+    "/:id/image/update",
+    upload.array("product", 10),
+    mToken.mAccessToken,
+    mMiddleware.mPermission,
+    mController.updateImageProductCtrl
 );
 router.post(
-  "/:id/update",
-  upload.none(),
-  mToken.mAccessToken,
-  mMiddleware.mPermission,
-  mMiddleware.mUpdate,
-  mController.updateProductCtrl
+    "/:id/update",
+    upload.none(),
+    mToken.mAccessToken,
+    mMiddleware.mPermission,
+    mMiddleware.mUpdate,
+    mController.updateProductCtrl
 );
 router.delete(
-  "/:id/delete",
-  upload.none(),
-  mToken.mAccessToken,
-  mMiddleware.mPermission,
-  mController.removeProductCtrl
+    "/:id/delete",
+    upload.none(),
+    mToken.mAccessToken,
+    mMiddleware.mPermission,
+    mController.removeProductCtrl
 );
 export default router;
