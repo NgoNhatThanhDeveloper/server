@@ -17,13 +17,6 @@ app.get("/", function(req, res) {
 });
 app.use(
     "/api/v1/",
-    function(req, res, next) {
-        console.log(req.body);
-        console.log(req.params);
-        console.log(req.query);
-        console.log(req.files)
-        next()
-    },
     router
 );
 app.get("/image/:id", (req, res) => {

@@ -15,7 +15,7 @@ export const mCreate = (req, res, next) => {
     if (req.body.ID && req.body.type && req.body.size) {
         req.body.product = {
             ID: req.body.ID,
-            type: req.body.name,
+            type: req.body.type,
             size: req.body.size,
             shop: req.body.payload.shop,
         };
@@ -29,7 +29,7 @@ export const mCreate = (req, res, next) => {
     } else {
         return res.json({
             success: false,
-            result: "Data left empty",
+            result: "Dữ liệu gửi lên còn thiếu",
         });
     }
 };
@@ -52,7 +52,7 @@ export const mUpdate = (req, res, next) => {
     } else {
         return res.json({
             success: false,
-            result: "Data left empty",
+            result: "Dữ liệu gửi lên còn thiếu",
         });
     }
 };
