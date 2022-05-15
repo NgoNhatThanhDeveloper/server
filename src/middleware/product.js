@@ -34,7 +34,7 @@ export const mCreate = (req, res, next) => {
     }
 };
 export const mUpdate = (req, res, next) => {
-    if (req.body.type || req.body.size || req.body.money || req.body.number) {
+    if (req.body.type || req.body.size || req.body.money || req.body.number || req.body.ID) {
         req.body.update = {}
         if (req.body.money) {
             req.body.update.money = req.body.money;
@@ -47,6 +47,9 @@ export const mUpdate = (req, res, next) => {
         }
         if (req.body.size) {
             req.body.update.size = req.body.size;
+        }
+        if (req.body.ID) {
+            req.body.update.ID = req.body.ID;
         }
         next();
     } else {
