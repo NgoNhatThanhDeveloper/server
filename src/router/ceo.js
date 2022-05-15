@@ -8,47 +8,47 @@ const upload = multer({ storage: multer.memoryStorage() });
 router.get("/shop/query", mToken.mAccessToken, mController.showShopCtrl);
 router.get("/HR/query", mToken.mAccessToken, mController.showHrCtrl);
 router.post(
-  "/shop/create",
-  upload.array("shop", 10),
-  mToken.mAccessToken,
-  mMiddleware.mCreateSHOP,
-  mController.createShopCtr
+    "/shop/create",
+    upload.single("shop"),
+    mToken.mAccessToken,
+    mMiddleware.mCreateSHOP,
+    mController.createShopCtr
 );
 router.post(
-  "/HR/create",
-  upload.fields([
-    { name: "front", maxCount: 1 },
-    { name: "back", maxCount: 1 },
-    { name: "avatar", maxCount: 1 },
-  ]),
-  mToken.mAccessToken,
-  mMiddleware.mCreateHR,
-  mController.createHrCtrl
+    "/HR/create",
+    upload.fields([
+        { name: "front", maxCount: 1 },
+        { name: "back", maxCount: 1 },
+        { name: "avatar", maxCount: 1 },
+    ]),
+    mToken.mAccessToken,
+    mMiddleware.mCreateHR,
+    mController.createHrCtrl
 );
 router.put(
-  "/HR/salary/:id/update",
-  upload.none(),
-  mToken.mAccessToken,
-  mMiddleware.mUpdateSalary,
-  mController.updateSalaryOfHrCtr
+    "/HR/salary/:id/update",
+    upload.none(),
+    mToken.mAccessToken,
+    mMiddleware.mUpdateSalary,
+    mController.updateSalaryOfHrCtr
 );
 router.delete(
-  "/HR/:id/remove",
-  upload.none(),
-  mToken.mAccessToken,
-  mController.removeHrCtr
+    "/HR/:id/remove",
+    upload.none(),
+    mToken.mAccessToken,
+    mController.removeHrCtr
 );
 router.delete(
-  "/shop/:id/remove",
-  upload.none(),
-  mToken.mAccessToken,
-  mController.removeShopCtr
+    "/shop/:id/remove",
+    upload.none(),
+    mToken.mAccessToken,
+    mController.removeShopCtr
 );
 router.put(
-  "/shop/replace",
-  upload.none(),
-  mToken.mAccessToken,
-  mMiddleware.mReplaceHR,
-  mController.replaceHRCtrl
+    "/shop/replace",
+    upload.none(),
+    mToken.mAccessToken,
+    mMiddleware.mReplaceHR,
+    mController.replaceHRCtrl
 );
 export default router;

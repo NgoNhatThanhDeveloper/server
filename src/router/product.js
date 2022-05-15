@@ -13,7 +13,7 @@ router.get(
 );
 router.post(
     "/create",
-    upload.single(),
+    upload.single("product"),
     function(req, res, next) {
         console.log(req.file)
         next()
@@ -25,7 +25,7 @@ router.post(
 );
 router.post(
     "/:id/image/update",
-    upload.single(),
+    upload.single("product"),
     mToken.mAccessToken,
     mMiddleware.mPermission,
     mController.updateImageProductCtrl
