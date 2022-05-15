@@ -34,7 +34,7 @@ export const createBill = (bill) => {
                 resolve(bill);
             })
             .catch((error) => {
-                console.error(error)
+                console.error(error);
                 reject(error);
             });
     });
@@ -91,6 +91,8 @@ export const createCustomer = (customer, files) => {
             })
             .then(() => {
                 const payment = new Payment({ _id: customer._id });
+                payment.total = [{ date: new Date(), total: 0 }];
+                payment.paid = [{ date: new Date(), paid: 0 }];
                 return payment.save();
             })
             .then(() => {
@@ -237,22 +239,32 @@ export const updatePayment = (customer_id, shop, total_add, paid_add) => {
             .catch((error) => reject(error));
     });
 };
+
+function sumArray(arr) {
+    let sum = 0;
+    arr.forEach(function(value) {
+        sum += value;
+    });
+
+    return sum;
+}
+
 export const showPayment = (query) => {
     return new Promise((resolve, reject) => {
         Payment.find(query)
-            .populate({ path: "_id", select: "name avatar" })
+            .populate({ path: "_id" })
             .exec()
             .then((payments) => {
                 if (payments.length > 0) {
-                    const result = payments.map(pay => {
+                    const result = payments.map((pay) => {
                         return {
                             _id: pay._id._id,
                             customer: pay._id.name,
                             avatar: pay._id.avatar,
-                            total: pay.total,
-                            paid: pay.paid
-                        }
-                    })
+                            total: sumArray(pay.total.map((pay) => pay.total)),
+                            paid: sumArray(pay.paid.map((pay) => pay.paid)),
+                        };
+                    });
                     resolve(result);
                 } else {
                     reject(new Error("Không tìm thấy sổ ghi nợ"));
@@ -322,5 +334,21 @@ const totalAfterUseVoucher = (voucher, total, shop) => {
                     reject(error);
                 });
         }
+    });
+};
+export const showCustomer = (query) => {
+    return new Promise((resolve, reject) => {
+        Customer.find(query)
+            .exec()
+            .then((result) => {
+                if (result.length > 0) {
+                    resolve(result);
+                } else {
+                    reject(new Error("Chưa có dữ liệu"));
+                }
+            })
+            .catch((error) => {
+                reject(error);
+            });
     });
 };

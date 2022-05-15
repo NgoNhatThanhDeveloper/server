@@ -119,3 +119,15 @@ export const showPaymentService = (req, res) => {
             return res.json({ success: false, result: error.message });
         });
 };
+export const showCustomer = (req, res) => {
+    req.query.shop = req.body.payload.shop;
+    repository
+        .showPayment(req.query)
+        .then((payments) => {
+            return res
+                .json({ success: true, result: "Yêu cầu thành công", data: payments });
+        })
+        .catch((error) => {
+            return res.json({ success: false, result: error.message });
+        });
+};

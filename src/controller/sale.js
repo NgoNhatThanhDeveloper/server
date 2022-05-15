@@ -32,3 +32,6 @@ export const showPaymentCtrl = (req, res) => {
 export const updatePaymentCtrl = (req, res) => {
     service.updatePayment(req, res);
 };
+export const showCustomerCtrl = (req, res) => {
+    service.showCustomer(req, res);
+};

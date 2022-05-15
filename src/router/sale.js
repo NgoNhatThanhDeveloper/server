@@ -25,6 +25,13 @@ router.get(
     mMiddleware.mPermission,
     mController.showBillCtrl
 );
+router.get(
+    "/customer/query",
+    upload.none(),
+    mToken.mAccessToken,
+    mMiddleware.mPermission,
+    mController.showCustomerCtrl
+);
 router.post(
     "/voucher/create",
     upload.none(),
