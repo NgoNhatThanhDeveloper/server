@@ -15,19 +15,17 @@ export const createProduct = (request) => {
             .catch((err) => {
                 if (err.message == "Sản phẩm không tồn tại") {
                     request.product._id = mongoose.Types.ObjectId();
-                    let product = new Product(request.product);
-                    let imageArr = request.files.map((file) => {
-                        let image = new Image({
-                            _id: mongoose.Types.ObjectId(),
-                            data: file.buffer,
-                            contentType: file.mineType,
-                            object: product._id,
-                            shop: product.shop,
-                        });
-                        image.save();
-                        return image._id;
+                    const product = new Product(request.product);
+                    const file = request.file;
+                    const image = new Image({
+                        _id: mongoose.Types.ObjectId(),
+                        data: file.buffer,
+                        contentType: file.mineType,
+                        object: product._id,
+                        shop: product.shop,
                     });
-                    product.images = imageArr;
+                    image.save();
+                    product.image = image._id;
                     product
                         .save()
                         .then(() => {
@@ -36,8 +34,6 @@ export const createProduct = (request) => {
                         .catch((err) => {
                             reject(err);
                         });
-                } else {
-                    reject(err);
                 }
             });
     });
@@ -61,26 +57,19 @@ export const updateProduct = (request) => {
 export const updateImageProduct = (request) => {
     return new Promise((resolve, reject) => {
         findProduct({ _id: request_id, shop: request.shop })
-            .then((product) => {
-                if (product.images.length == 10) {
-                    reject(new Error("Giới hạn 10 bức ảnh với 1 sản phẩm"));
-                } else {
-                    const arrRemove = request.files.splice(0, 10 - product.images.length);
-                    let imageArr = arrRemove.map((file) => {
-                        let image = new Image({
-                            _id: mongoose.Types.ObjectId(),
-                            data: file.buffer,
-                            contentType: file.mineType,
-                            object: product._id,
-                            shop: product.shop,
-                        });
-                        image.save();
-                        return image._id;
-                    });
-                    const imageUpdate = product.images.concat(imageArr);
-                    product.images = imageUpdate;
-                    return product.save();
-                }
+            .then(async(product) => {
+                const file = request.file;
+                const image = new Image({
+                    _id: mongoose.Types.ObjectId(),
+                    data: file.buffer,
+                    contentType: file.mineType,
+                    object: product._id,
+                    shop: product.shop,
+                });
+                await image.save();
+                await Image.remove({ _id: product.image });
+                product.image = image._id;
+                return product.save();
             })
             .then(() => {
                 resolve();
@@ -94,7 +83,7 @@ export const removeProduct = (request) => {
     return new Promise((resolve, reject) => {
         findProduct({ _id: request._id, shop: request.shop })
             .then((product) => {
-                return Image.deleteMany({ $in: product.images }).exec();
+                return Image.deleteOne({ _id: product.image }).exec();
             })
             .then(() => {
                 return Product.deleteOne({ _id: request._id }).exec();
