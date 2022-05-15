@@ -101,7 +101,6 @@ export const updatePayment = (req, res) => {
         )
         .then(() => {
             return res
-
                 .json({ success: true, result: "Yêu cầu thành công" });
         })
         .catch((error) => {
