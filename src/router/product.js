@@ -14,6 +14,10 @@ router.get(
 router.post(
     "/create",
     upload.single("product"),
+    function(req, res, next) {
+        console.log(req.file)
+        next()
+    },
     mToken.mAccessToken,
     mMiddleware.mPermission,
     mMiddleware.mCreate,
