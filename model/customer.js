@@ -16,7 +16,7 @@ const customerSchema = new mongoose.Schema({
     cardID: {
         code: {
             type: String,
-            maxlength: 13,
+            maxlength: 14,
             required: true,
             unique: true,
             validate: {
