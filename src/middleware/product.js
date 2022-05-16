@@ -14,9 +14,9 @@ export const mPermission = (req, res, next) => {
 export const mCreate = (req, res, next) => {
     if (req.body.ID && req.body.type && req.body.size) {
         req.body.product = {
-            ID: req.body.ID,
-            type: req.body.type,
-            size: req.body.size,
+            ID: req.body.ID.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ''),
+            type: req.body.type.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ''),
+            size: req.body.size.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ''),
             shop: req.body.payload.shop,
         };
         if (req.body.money) {
@@ -43,13 +43,13 @@ export const mUpdate = (req, res, next) => {
             req.body.update.number = req.body.number;
         }
         if (req.body.type) {
-            req.body.update.type = req.body.type;
+            req.body.update.type = req.body.type.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '')
         }
         if (req.body.size) {
-            req.body.update.size = req.body.size;
+            req.body.update.size = req.body.size.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '')
         }
         if (req.body.ID) {
-            req.body.update.ID = req.body.ID;
+            req.body.update.ID = req.body.ID.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '')
         }
         next();
     } else {
