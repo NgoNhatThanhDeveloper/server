@@ -337,9 +337,9 @@ const totalAfterUseVoucher = (voucher, total, shop) => {
         }
     });
 };
-export const showCustomer = (id) => {
+export const showCustomer = (id, shop) => {
     return new Promise((resolve, reject) => {
-        Customer.findOne({ _id: id })
+        Customer.findOne({ _id: id, shop: shop })
             .exec()
             .then((result) => {
                 if (result) {

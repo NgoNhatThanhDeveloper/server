@@ -122,10 +122,10 @@ export const showPaymentService = (req, res) => {
 export const showCustomer = (req, res) => {
     req.query.shop = req.body.payload.shop;
     repository
-        .showPayment(req.query)
-        .then((payments) => {
+        .showCustomer(req.params.id, req.body.payload.shop)
+        .then((customer) => {
             return res
-                .json({ success: true, result: "Yêu cầu thành công", data: payments });
+                .json({ success: true, result: "Yêu cầu thành công", data: customer });
         })
         .catch((error) => {
             return res.json({ success: false, result: error.message });
