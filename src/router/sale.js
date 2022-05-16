@@ -7,7 +7,6 @@ import * as mMiddleware from "../middleware/sale.js";
 import * as mController from "../controller/sale.js";
 router.get(
     "/voucher/query",
-    upload.none(),
     mToken.mAccessToken,
     mMiddleware.mPermission,
     mController.showVoucherCtrl
@@ -20,14 +19,12 @@ router.get(
 );
 router.get(
     "/bill/query",
-    upload.none(),
     mToken.mAccessToken,
     mMiddleware.mPermission,
     mController.showBillCtrl
 );
 router.get(
-    "/customer/query",
-    upload.none(),
+    "/customer/:id",
     mToken.mAccessToken,
     mMiddleware.mPermission,
     mController.showCustomerCtrl

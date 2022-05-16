@@ -337,12 +337,12 @@ const totalAfterUseVoucher = (voucher, total, shop) => {
         }
     });
 };
-export const showCustomer = (query) => {
+export const showCustomer = (id) => {
     return new Promise((resolve, reject) => {
-        Customer.find(query)
+        Customer.findOne({ _id: id })
             .exec()
             .then((result) => {
-                if (result.length > 0) {
+                if (result) {
                     resolve(result);
                 } else {
                     reject(new Error("Chưa có dữ liệu"));
