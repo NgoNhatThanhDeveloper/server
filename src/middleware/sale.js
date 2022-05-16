@@ -50,6 +50,7 @@ export const mCreateCustomer = (req, res, next) => {
         console.log(req.body)
         next();
     } else {
+        console.log(req.body)
         return res.json({ success: false, result: "Dữ liệu yêu cầu còn thiếu hoặc không hợp lệ" });
     }
 };

@@ -45,12 +45,6 @@ router.post(
         { name: "back", maxCount: 1 },
         { name: "avatar", maxCount: 1 },
     ]),
-    function(req, res, next) {
-        req.body.name = req.body.name
-        console.log(req.body);
-        console.log(req.files);
-        next()
-    },
     mToken.mAccessToken,
     mMiddleware.mPermission,
     mMiddleware.mCreateCustomer,
