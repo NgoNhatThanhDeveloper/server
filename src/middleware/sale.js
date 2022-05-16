@@ -10,17 +10,22 @@ export const mPermission = (req, res, next) => {
     }
 };
 export const mCreateBill = (req, res, next) => {
-    if (validate.validateString(req.body.customer) && req.body.product) {
+    if (req.body.customer && req.body.product) {
         if (req.body.product.length > 0) {
             req.body.bill = {
-                customer: req.body.customer,
+                customer: req.body.customer.replace(
+                    /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi,
+                    ""
+                ),
                 product: req.body.product,
                 shop: req.body.payload.shop,
             };
             if (req.body.voucher) {
-                req.body.bill.voucher = req.body.voucher;
+                req.body.bill.voucher = req.body.voucher.replace(
+                    /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi,
+                    ""
+                );
             }
-            console.log(req.body.bill);
             next();
         } else {
             return res.json({
@@ -52,7 +57,6 @@ export const mCreateCustomer = (req, res, next) => {
             shop: req.body.payload.shop,
         };
         req.body.customer = customer;
-        console.log(req.body)
         next();
     } else {
         return res.json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
@@ -60,6 +64,10 @@ export const mCreateCustomer = (req, res, next) => {
 };
 export const mUpdateVoucherOfBilling = (req, res, next) => {
     if (req.body.voucher) {
+        req.body.voucher = req.body.voucher.replace(
+            /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi,
+            ""
+        );
         next();
     } else {
         return res.json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
@@ -68,13 +76,22 @@ export const mUpdateVoucherOfBilling = (req, res, next) => {
 export const mCreateVoucher = (req, res, next) => {
     if (req.body.conditionTotal && req.body.time) {
         req.body.voucher = {
-            time: req.body.time,
-            conditionTotal: req.body.conditionTotal,
+            time: req.body.time.replace(
+                /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi,
+                ""
+            ),
+            conditionTotal: req.body.conditionTotal.replace(
+                /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi,
+                ""
+            ),
             shop: req.body.payload.shop,
         };
         if (req.body.percent || req.body.money || req.body.description) {
             if (req.body.description) {
-                req.body.voucher.description = req.body.description;
+                req.body.voucher.description = req.body.description.replace(
+                    /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi,
+                    ""
+                );
             }
             if (req.body.percent || req.body.money) {
                 if (req.body.percent) {

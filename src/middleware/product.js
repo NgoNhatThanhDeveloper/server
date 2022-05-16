@@ -6,7 +6,7 @@ export const mPermission = (req, res, next) => {
     } else {
         return res.json({
             success: false,
-            result: "You can't use this function ",
+            result: "Bạn không thể sử dụng chức năng này ",
         });
     }
 };
