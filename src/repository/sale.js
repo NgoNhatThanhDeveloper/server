@@ -62,7 +62,6 @@ const saveImage = (file, object) => {
 };
 export const createCustomer = (customerJson, files) => {
     customerJson._id = mongoose.Types.ObjectId();
-    console.log(customerJson._id);
     return new Promise((resolve, reject) => {
         Customer.findOne({
                 name: customerJson.name,

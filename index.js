@@ -37,12 +37,5 @@ app.get("/image/:id", (req, res) => {
         });
 });
 server.listen(process.env.PORT, () => {
-    console.log(`listening on port ${process.env.PORT}`);
     connectToMongodb()
-        .then(() => {
-            console.log("database connected");
-        })
-        .catch((err) => {
-            console.error(err.message);
-        });
 });
