@@ -40,7 +40,6 @@ export const mCreateCustomer = (req, res, next) => {
     ) {
         let customer = {
             name: req.body.name,
-            address: req.body.address,
             cardID: {
                 code: req.body.code,
             },
