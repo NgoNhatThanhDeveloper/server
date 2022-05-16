@@ -36,7 +36,6 @@ export const mCreateCustomer = (req, res, next) => {
     if (
         validate.validateCardNumber(req.body.code) &&
         validate.validateString(req.body.name) &&
-        validate.validateString(req.body.address) &&
         validate.validatePhone(req.body.phone)
     ) {
         let customer = {
