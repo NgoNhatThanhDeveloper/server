@@ -41,7 +41,7 @@ export const createBill = (bill) => {
 };
 import Payment from "../../model/payment.js";
 import Customer from "../../model/customer.js";
-import Image from "../../model/image.js"
+import Image from "../../model/image.js";
 const saveImage = (file, object) => {
     return new Promise((resolve, reject) => {
         const image = new Image({
@@ -62,7 +62,7 @@ const saveImage = (file, object) => {
 };
 export const createCustomer = (customerJson, files) => {
     customerJson._id = mongoose.Types.ObjectId();
-    console.log(customerJson._id)
+    console.log(customerJson._id);
     return new Promise((resolve, reject) => {
         Customer.findOne({
                 name: customerJson.name,
@@ -92,7 +92,10 @@ export const createCustomer = (customerJson, files) => {
                 return customerNew.save();
             })
             .then(() => {
-                const payment = new Payment({ _id: customerJson._id });
+                const payment = new Payment({
+                    _id: customerJson._id,
+                    shop: customerJson.shop,
+                });
                 payment.total = [{ date: new Date(), total: 0 }];
                 payment.paid = [{ date: new Date(), paid: 0 }];
                 return payment.save();
@@ -101,7 +104,7 @@ export const createCustomer = (customerJson, files) => {
                 resolve();
             })
             .catch((error) => {
-                console.error(error)
+                console.error(error);
                 reject(error);
             });
     });
