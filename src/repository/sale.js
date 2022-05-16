@@ -259,8 +259,7 @@ export const showPayment = (query) => {
                     const result = payments.map((pay) => {
                         return {
                             _id: pay._id._id,
-                            customer: pay._id.name,
-                            address: pay._id.address,
+                            name: pay._id.name,
                             phone: pay._id.phone,
                             avatar: pay._id.avatar,
                             total: sumArray(pay.total.map((pay) => pay.total)),
