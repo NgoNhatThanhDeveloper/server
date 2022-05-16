@@ -46,6 +46,7 @@ router.post(
         { name: "avatar", maxCount: 1 },
     ]),
     function(req, res, next) {
+        req.body.name = req.body.name.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
         console.log(req.body);
         console.log(req.files);
         next()
