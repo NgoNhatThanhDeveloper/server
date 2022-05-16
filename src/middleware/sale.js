@@ -34,7 +34,7 @@ export const mCreateBill = (req, res, next) => {
 };
 export const mCreateCustomer = (req, res, next) => {
     if (
-        validate.validateCardNumber(req.body.code) &&
+        validate.validateCardNumber(req.body.code.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '')) &&
         validate.validateString(req.body.name.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '')) &&
         validate.validatePhone(req.body.phone.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ''))
     ) {
@@ -47,9 +47,10 @@ export const mCreateCustomer = (req, res, next) => {
             shop: req.body.payload.shop,
         };
         req.body.customer = customer;
+        console.log(req.body)
         next();
     } else {
-        return res.json({ success: false, result: "Dữ liệu yêu cầu còn thiếu" });
+        return res.json({ success: false, result: "Dữ liệu yêu cầu còn thiếu hoặc không hợp lệ" });
     }
 };
 export const mUpdateVoucherOfBilling = (req, res, next) => {
