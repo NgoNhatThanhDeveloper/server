@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import * as validate from "../validate/validate.js";
 import mongoosePaginate from "mongoose-paginate-v2";
 const customerSchema = new mongoose.Schema({
-    _id: { type: mongoose.Schema.Types.ObjectId },
+    _id: { type: mongoose.Schema.Types.ObjectId, ref: "Payment" },
     name: {
         type: String,
         required: true,
