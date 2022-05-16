@@ -87,7 +87,7 @@ export const createCustomer = (customerJson, files) => {
                 const customerNew = new Customer(customerJson);
                 customerNew.cardID.front = image[0];
                 customerNew.cardID.back = image[1];
-                customerNew.cardID.avatar = image[2];
+                customerNew.avatar = image[2];
                 return customerNew.save();
             })
             .then(() => {
