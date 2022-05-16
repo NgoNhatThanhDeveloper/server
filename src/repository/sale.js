@@ -41,6 +41,7 @@ export const createBill = (bill) => {
 };
 import Payment from "../../model/payment.js";
 import Customer from "../../model/customer.js";
+import Image from "../../model/image.js"
 const saveImage = (file, object) => {
     return new Promise((resolve, reject) => {
         const image = new Image({
@@ -52,19 +53,20 @@ const saveImage = (file, object) => {
         image
             .save()
             .then(() => {
-                resolve(image_id);
+                resolve(image._id);
             })
             .catch((error) => {
                 reject(error);
             });
     });
 };
-export const createCustomer = (customer, files) => {
-    customer._id = mongoose.Types.ObjectId();
+export const createCustomer = (customerJson, files) => {
+    customerJson._id = mongoose.Types.ObjectId();
+    console.log(customerJson._id)
     return new Promise((resolve, reject) => {
         Customer.findOne({
-                name: customer.name,
-                "cardID.code": customer.cardID.code,
+                name: customerJson.name,
+                "cardID.code": customerJson.cardID.code,
             })
             .exec()
             .then((customer) => {
@@ -76,29 +78,30 @@ export const createCustomer = (customer, files) => {
                     );
                 } else {
                     return Promise.all([
-                        saveImage(files.front[0], customer._id),
-                        saveImage(files.back[0], customer._id),
-                        saveImage(files.avatar[0], customer._id),
+                        saveImage(files.front[0], customerJson._id),
+                        saveImage(files.back[0], customerJson._id),
+                        saveImage(files.avatar[0], customerJson._id),
                     ]);
                 }
             })
             .then((image) => {
-                const customer = new Customer(customer);
-                customer.cardID.front = image[0];
-                customer.cardID.back = image[1];
-                customer.cardID.avatar = image[2];
-                return customer.save();
+                const customerNew = new Customer(customerJson);
+                customerNew.cardID.front = image[0];
+                customerNew.cardID.back = image[1];
+                customerNew.cardID.avatar = image[2];
+                return customerNew.save();
             })
             .then(() => {
-                const payment = new Payment({ _id: customer._id });
+                const payment = new Payment({ _id: customerJson._id });
                 payment.total = [{ date: new Date(), total: 0 }];
                 payment.paid = [{ date: new Date(), paid: 0 }];
                 return payment.save();
             })
             .then(() => {
-                resolve(customer._id);
+                resolve();
             })
             .catch((error) => {
+                console.error(error)
                 reject(error);
             });
     });

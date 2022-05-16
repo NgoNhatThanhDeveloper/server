@@ -12,10 +12,10 @@ export const createBillService = (req, res) => {
 export const createCustomerService = (req, res) => {
     repository
         .createCustomer(req.body.customer, req.files)
-        .then((id_customer) => {
+        .then(() => {
             return res
 
-                .json({ success: true, result: "Yêu cầu thành công", data: id_customer });
+                .json({ success: true, result: "Yêu cầu thành công", data: "Thành công" });
         })
         .catch((error) => {
             return res.json({ success: false, result: error.message });
