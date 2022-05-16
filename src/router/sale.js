@@ -53,9 +53,6 @@ router.post(
 router.post(
     "/bill/create",
     upload.none(),
-    function(req, res, next) {
-        console.log(req.body);
-    },
     mToken.mAccessToken,
     mMiddleware.mPermission,
     mMiddleware.mCreateBill,
