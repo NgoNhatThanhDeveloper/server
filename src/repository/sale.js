@@ -252,7 +252,7 @@ function sumArray(arr) {
 export const showPayment = (query) => {
     return new Promise((resolve, reject) => {
         Payment.find(query)
-            .populate({ path: "_id" })
+            .populate({ path: "_id", select: "address avatar phone" })
             .exec()
             .then((payments) => {
                 if (payments.length > 0) {
@@ -260,6 +260,8 @@ export const showPayment = (query) => {
                         return {
                             _id: pay._id._id,
                             customer: pay._id.name,
+                            address: pay._id.address,
+                            phone: pay._id.phone,
                             avatar: pay._id.avatar,
                             total: sumArray(pay.total.map((pay) => pay.total)),
                             paid: sumArray(pay.paid.map((pay) => pay.paid)),
