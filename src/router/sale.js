@@ -73,7 +73,7 @@ router.delete(
     mController.removeBillCtrl
 );
 router.put(
-    "/bill/voucher",
+    "/bill/:id/voucher",
     upload.none(),
     mToken.mAccessToken,
     mMiddleware.mPermission,
