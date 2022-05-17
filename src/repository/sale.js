@@ -175,7 +175,7 @@ export const showBill = (query) => {
                             _id: bill._id,
                             customer: bill.customer,
                             total: bill.total,
-                            createAt: bill.createdAt,
+                            createdAt: bill.createdAt,
                             product: products,
                         };
                     });
