@@ -159,10 +159,27 @@ export const updateVoucherOfBill = (bill_id, shop, voucher_id) => {
 export const showBill = (query) => {
     return new Promise((resolve, reject) => {
         Bill.find(query)
+            .populate({ path: "product._id", select: "image" })
             .exec()
             .then((bills) => {
                 if (bills.length > 0) {
-                    resolve(bills);
+                    const result = bills.map((bill) => {
+                        const products = bill.product.map((product) => {
+                            return {
+                                _id: product._id._id,
+                                image: product._id.image,
+                                number: product.number,
+                            };
+                        });
+                        return {
+                            _id: bill._id,
+                            customer: bill.customer,
+                            total: bill.total,
+                            createAt: bill.createAt,
+                            product: products,
+                        };
+                    });
+                    resolve(result);
                 } else {
                     reject(new Error(`Không tìm thấy hóa đơn nào`));
                 }
