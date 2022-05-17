@@ -10,6 +10,7 @@ const billSchema = new mongoose.Schema({
     shop: { type: mongoose.Schema.Types.ObjectId, ref: "Shop" },
     product: [{
         _id: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+        money: number,
         number: { type: Number, min: 1 },
     }, ],
     total: { type: Number, min: 1000 },

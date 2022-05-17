@@ -168,6 +168,7 @@ export const showBill = (query) => {
                             return {
                                 _id: product._id._id,
                                 image: product._id.image,
+                                money: product.money,
                                 number: product.number,
                             };
                         });
