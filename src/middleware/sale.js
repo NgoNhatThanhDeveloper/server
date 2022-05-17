@@ -108,7 +108,21 @@ export const mCreateVoucher = (req, res, next) => {
 };
 export const mUpdatePayment = (req, res, next) => {
     if (req.body.total || req.body.paid) {
-        if (req.body.total >= 0 && req.body.paid >= 0) {
+        if (req.body.total) {
+            if (req.body.total < 1000) {
+                return res.json({
+                    success: false,
+                    result: "Dữ liệu không phù hợp, tối thiểu là 1000 đồng",
+                });
+            }
+        }
+        if (req.body.total) {
+            if (req.body.total < 1000) {
+                return res.json({
+                    success: false,
+                    result: "Dữ liệu không phù hợp, tối thiểu là 1000 đồng",
+                });
+            }
             next();
         } else {
             return res.json({ success: false, result: "Dữ liệu không phù hợp" });
