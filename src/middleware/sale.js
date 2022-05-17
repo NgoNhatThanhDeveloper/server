@@ -108,7 +108,7 @@ export const mCreateVoucher = (req, res, next) => {
 };
 export const mUpdatePayment = (req, res, next) => {
     if (req.body.total || req.body.paid) {
-        if (req.body.total > 1000 && req.body.paid > 1000) {
+        if (req.body.total >= 0 && req.body.paid >= 0) {
             next();
         } else {
             return res.json({ success: false, result: "Dữ liệu không phù hợp" });
