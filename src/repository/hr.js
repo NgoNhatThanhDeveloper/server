@@ -192,7 +192,7 @@ export const showInformationEmploy = (query) => {
                             },
                         };
                     });
-                    resolve(arr);
+                    resolve(result);
                 } else {
                     reject(new Error("Nhân viên không tồn tại"));
                 }
