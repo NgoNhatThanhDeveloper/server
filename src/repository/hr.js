@@ -175,22 +175,17 @@ export const showInformationEmploy = (query) => {
                     });
                     const result = arr.map((user) => {
                         return {
-                            information: {
-                                _id: user._id._id,
-                                name: user.information.name,
-                                address: user.information.address,
-                                phone: user.information.phone,
-                                email: user.authenticator.email,
-                                avatar: user.information.avatar,
-                                permission: user.permission,
-                                loginStatus: user.loginStatus,
-                                cardID: user.information.cardID,
-                            },
-                            salary: {
-                                _id: user._id._id,
-                                salary: user._id.salary,
-                                bonus: user._id.bonus,
-                            },
+                            _id: user._id._id,
+                            name: user.information.name,
+                            address: user.information.address,
+                            phone: user.information.phone,
+                            email: user.authenticator.email,
+                            avatar: user.information.avatar,
+                            permission: user.permission,
+                            loginStatus: user.loginStatus,
+                            cardID: user.information.cardID,
+                            salary: user._id.salary,
+                            bonus: user._id.bonus,
                         };
                     });
                     resolve(result);
