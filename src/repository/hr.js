@@ -187,6 +187,7 @@ export const showInformationEmploy = (query) => {
                                 cardID: user.information.cardID,
                             },
                             salary: {
+                                _id: user._id._id,
                                 salary: user._id.salary,
                                 bonus: user._id.bonus,
                             },
