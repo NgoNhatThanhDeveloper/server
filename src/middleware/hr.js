@@ -93,8 +93,12 @@ export const mUpdatePermissions = (req, res, next) => {
     }
 };
 export const mUpdateSalary = (req, res, next) => {
-    if (req.body.salary && req.body.salary >= 0) {
-        next();
+    if (req.body.salary || req.body.bonus) {
+        if (req.body.salary < 0 || req.body.bonus < 0) {
+            return res.json({ success: false, result: "Không được nhỏ hơn 0" });
+        } else {
+            next();
+        }
     } else {
         return res.json({ success: false, result: "Dữ liệu còn thiếu" });
     }

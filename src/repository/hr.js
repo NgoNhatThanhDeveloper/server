@@ -138,8 +138,15 @@ export const updateSalaryOfEmploy = (request) => {
                             )
                         );
                     } else {
+                        let update = {};
+                        if (request.salary) {
+                            update.salary = salary;
+                        }
+                        if (request.bonus) {
+                            update.bonus = bonus;
+                        }
                         return Salary.updateOne(request.query, {
-                            $set: { salary: request.update },
+                            $set: update,
                             upsert: true,
                         }).exec();
                     }
