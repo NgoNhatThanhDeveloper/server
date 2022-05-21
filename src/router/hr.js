@@ -24,15 +24,17 @@ router.post(
     mMiddleware.mCreate,
     mController.createEmployCtrl
 );
-router.put(
+router.post(
     "/employ/:id/update",
+    upload.none(),
     mToken.mAccessToken,
     mMiddleware.mPermission,
     mMiddleware.mUpdatePermissions,
     mController.updatePermissionOfEmployCtrl
 );
-router.put(
+router.post(
     "/salary/:id/update",
+    upload.none(),
     mToken.mAccessToken,
     mMiddleware.mPermission,
     mMiddleware.mUpdateSalary,
