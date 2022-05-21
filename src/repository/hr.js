@@ -140,10 +140,10 @@ export const updateSalaryOfEmploy = (request) => {
                     } else {
                         let update = {};
                         if (request.salary) {
-                            update.salary = salary;
+                            update.salary = request.salary;
                         }
                         if (request.bonus) {
-                            update.bonus = bonus;
+                            update.bonus = request.bonus;
                         }
                         return Salary.updateOne(request.query, {
                             $set: update,
