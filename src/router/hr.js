@@ -43,6 +43,7 @@ router.post(
 router.delete(
     "/:id/remove",
     mToken.mAccessToken,
+    mMiddleware.mPermission,
     mController.removeEmployCtrl
 );
 export default router;
