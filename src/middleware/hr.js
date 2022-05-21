@@ -64,7 +64,10 @@ export const mCreate = (req, res, next) => {
                         ""
                     ),
                     cardID: {
-                        code: req.body.code,
+                        code: req.body.code.replace(
+                            /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi,
+                            ""
+                        ),
                     },
                 },
             };

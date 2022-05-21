@@ -84,7 +84,6 @@ const accountSchema = new mongoose.Schema({
         cardID: {
             code: {
                 type: String,
-                maxlength: 12,
                 required: true,
                 unique: true,
                 validate: {
