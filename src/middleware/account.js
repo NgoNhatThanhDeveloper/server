@@ -1,7 +1,7 @@
 import * as validate from "../../validate/validate.js";
 export const mReplaceEmail = (req, res, next) => {
     if (validate.validateEmail(req.body.email)) {
-        req.body.email = req.body.email.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '')
+        req.body.email = req.body.email.replace(/[`~!#$%^&*()_|+\-=?;:'",<>\{\}\[\]\\\/]/gi, '')
         next();
     } else {
         return res.json({ success: false, result: "Dữ liệu gửi lên còn thiếu" });

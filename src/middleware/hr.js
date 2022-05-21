@@ -41,7 +41,7 @@ export const mCreate = (req, res, next) => {
                 ),
                 authenticator: {
                     email: req.body.email.replace(
-                        /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi,
+                        /[`~!#$%^&*()_|+\-=?;:'",<>\{\}\[\]\\\/]/gi,
                         ""
                     ),
                 },
