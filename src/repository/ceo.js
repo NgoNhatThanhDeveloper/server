@@ -251,14 +251,28 @@ export const showHR = (query) => {
     return new Promise((resolve, reject) => {
         Account.find(query, "information")
             .populate({
-                path: "shop"
+                path: "shop",
             })
             .populate({ path: "_id" })
             .exec()
             .then((accounts) => {
                 if (accounts.length > 0) {
-
-                    resolve(accounts);
+                    const result = accounts.map((user) => {
+                        return {
+                            _id: user._id._id,
+                            name: user.information.name,
+                            address: user.information.address,
+                            phone: user.information.phone,
+                            email: user.authenticator.email,
+                            avatar: user.information.avatar,
+                            cardID: user.information.cardID,
+                            salary: user._id.salary,
+                            bonus: user._id.bonus,
+                            shop: user.shop._id,
+                            shopName: user.shop.name
+                        };
+                    });
+                    resolve(result);
                 } else {
                     reject(new Error("Nhân viên không tồn tại"));
                 }
