@@ -269,7 +269,7 @@ export const showHR = (query) => {
                             salary: user._id.salary,
                             bonus: user._id.bonus,
                             shop: user.shop._id,
-                            shopName: user.shop.name
+                            shopName: user.shop.name,
                         };
                     });
                     resolve(result);
@@ -289,7 +289,20 @@ export const showSHOP = (query) => {
             .exec()
             .then((shops) => {
                 if (shops.length > 0) {
-                    resolve(shops);
+                    const result = shops.map((shop) => {
+                        return {
+                            _id: shop._id,
+                            name: shop.name,
+                            address: shop.address,
+                            image: shop.image,
+                            phone: shop.phone,
+                            HR: shop.HR._id,
+                            nameHR: shop.HR.information.name,
+                            phoneHR: shop.HR.information.phone,
+                            avatarHR: shop.HR.information.avatar,
+                        };
+                    });
+                    resolve(result);
                 } else {
                     reject(new Error("Cửa hàng không tồn tại"));
                 }
