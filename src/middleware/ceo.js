@@ -36,7 +36,7 @@ export const mCreateHR = (req, res, next) => {
                 ),
                 authenticator: {
                     email: req.body.email.replace(
-                        /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi,
+                        /[`~!#$%^&*()_|+\-=?;:'",<>\{\}\[\]\\\/]/gi,
                         ""
                     ),
                 },
