@@ -57,7 +57,7 @@ export const createHR = (accountJson, files) => {
             });
     });
 };
-export const createSHOP = (shopJson, files) => {
+export const createSHOP = (shopJson, file) => {
     shopJson._id = mongoose.Types.ObjectId();
     return new Promise((resolve, reject) => {
         Shop.findOne({ name: shopJson.name, address: shopJson.address })
@@ -66,26 +66,23 @@ export const createSHOP = (shopJson, files) => {
                 if (shop) {
                     reject(new Error(`Cửa hàng đã tồn tại`));
                 } else {
-                    let promise_image = files.map((file) => {
-                        return new Promise((resolve) => {
-                            const image = new Image({
-                                _id: mongoose.Types.ObjectId(),
-                                data: file.buffer,
-                                contentType: file.mineType,
-                                object: shopJson._id,
-                                shop: shopJson._id._id,
-                            });
-                            image
-                                .save()
-                                .then(() => {
-                                    resolve(image._id);
-                                })
-                                .catch((err) => {
-                                    reject(err);
-                                });
+                    return new Promise((resolve) => {
+                        const image = new Image({
+                            _id: mongoose.Types.ObjectId(),
+                            data: file.buffer,
+                            contentType: file.mineType,
+                            object: shopJson._id,
+                            shop: shopJson._id._id,
                         });
+                        image
+                            .save()
+                            .then(() => {
+                                resolve(image._id);
+                            })
+                            .catch((err) => {
+                                reject(err);
+                            });
                     });
-                    return Promise.all(promise_image);
                 }
             })
             .then((image) => {
@@ -97,6 +94,7 @@ export const createSHOP = (shopJson, files) => {
                 resolve();
             })
             .catch((error) => {
+
                 reject(new Error("Đã có lỗi phát sinh"));
             });
     });
