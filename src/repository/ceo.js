@@ -94,7 +94,6 @@ export const createSHOP = (shopJson, file) => {
                 resolve();
             })
             .catch((error) => {
-
                 reject(new Error("Đã có lỗi phát sinh"));
             });
     });
@@ -247,7 +246,7 @@ export const updateSalaryOfHR = (HR_update, salary, bonus) => {
 };
 export const showHR = (query) => {
     return new Promise((resolve, reject) => {
-        Account.find(query, "information")
+        Account.find(query, "information authenticator")
             .populate({
                 path: "shop",
             })
