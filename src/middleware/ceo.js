@@ -41,6 +41,7 @@ export const mCreateHR = (req, res, next) => {
                     ),
                 },
                 permission: "hr",
+                shop: "62771e8fb022d5da1121dd8e",
                 information: {
                     name: req.body.name.replace(
                         /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi,
@@ -78,6 +79,7 @@ export const mCreateSHOP = (req, res, next) => {
                 /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi,
                 ""
             ),
+            HR: "62760dcd9da83ff4afe25d99",
             address: req.body.address.replace(
                 /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi,
                 ""
