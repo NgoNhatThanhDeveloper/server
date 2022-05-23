@@ -5,7 +5,6 @@ const productSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     ID: {
         type: String,
-        uppercase: true,
         validate: {
             validator: (input) => {
                 return validate.validateString(input);

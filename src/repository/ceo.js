@@ -289,18 +289,22 @@ export const showSHOP = (query) => {
             .exec()
             .then((shops) => {
                 if (shops.length > 0) {
-                    const result = shops.map((shop) => {
-                        return {
-                            _id: shop._id,
-                            name: shop.name,
-                            address: shop.address,
-                            image: shop.image,
-                            phone: shop.phone,
-                            HR: shop.HR._id,
-                            nameHR: shop.HR.information.name,
-                            phoneHR: shop.HR.information.phone,
-                            avatarHR: shop.HR.information.avatar,
-                        };
+                    const shopNew = shops.filter((sh) => {
+                        return sh._id != "628a71bd2c0aedc5e3d83a60";
+                    });
+                    const result = shopNew.map((shop) => {
+                        if (shop._id.toString() != "628a71bd2c0aedc5e3d83a60")
+                            return {
+                                _id: shop._id,
+                                name: shop.name,
+                                address: shop.address,
+                                image: shop.image,
+                                phone: shop.phone,
+                                HR: shop.HR._id,
+                                nameHR: shop.HR.information.name,
+                                phoneHR: shop.HR.information.phone,
+                                avatarHR: shop.HR.information.avatar,
+                            };
                     });
                     resolve(result);
                 } else {

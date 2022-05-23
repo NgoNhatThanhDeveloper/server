@@ -6,7 +6,6 @@ const shopSchema = new mongoose.Schema({
     _id: { type: mongoose.Schema.Types.ObjectId },
     name: {
         type: String,
-        uppercase: true,
         maxLength: 100,
         validate: {
             validator: (input) => {
@@ -21,7 +20,6 @@ const shopSchema = new mongoose.Schema({
     },
     address: {
         type: String,
-        uppercase: true,
         maxLength: 500,
         validate: {
             validator: (input) => {
