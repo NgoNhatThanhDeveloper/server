@@ -19,11 +19,7 @@ export const mCreateHR = (req, res, next) => {
         req.body.phone &&
         req.body.code
     ) {
-        req.body.permission = req.body.permission.replace(
-            /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi,
-            ""
-        );
-        if (req.body.permission == "ceo") {
+        if (req.body.payload.permission != "ceo") {
             return res.json({
                 success: false,
                 result: "Bạn không thể tạo vị trí làm việc này do không đủ quyền hạn",
