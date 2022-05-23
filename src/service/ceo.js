@@ -18,7 +18,7 @@ export const createHRService = (req, res) => {
 };
 export const createShopService = (req, res) => {
     repository
-        .createSHOP(req.body.shop, req.files)
+        .createSHOP(req.body.shop, req.file)
         .then(() => {
             return res.json({ success: true, result: "Thành công" });
         })
