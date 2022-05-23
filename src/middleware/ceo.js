@@ -73,6 +73,8 @@ export const mCreateHR = (req, res, next) => {
     }
 };
 export const mCreateSHOP = (req, res, next) => {
+    console.log(req.body)
+    console.log(req.file)
     if (req.body.name && req.body.address) {
         let shop = {
             name: req.body.name.replace(
