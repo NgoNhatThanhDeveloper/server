@@ -5,7 +5,7 @@ export const mPermission = (req, res, next) => {
     } else {
         return res.json({
             success: false,
-            result: "You do not have the right to use this function",
+            result: "bạn không được quyền sử dụng chức năng này !",
         });
     }
 };
@@ -92,7 +92,7 @@ export const mUpdatePermissions = (req, res, next) => {
             next();
         }
     } else {
-        return res.json({ success: false, result: "Data left empty" });
+        return res.json({ success: false, result: "Dữ liệu còn thiếu" });
     }
 };
 export const mUpdateSalary = (req, res, next) => {
